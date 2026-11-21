@@ -1,0 +1,535 @@
+{
+  "asset": "002-techwear-hunter",
+  "blend": "scenes/002-techwear-hunter/002-techwear-hunter.blend",
+  "parts": 88,
+  "families": {
+    "InnerLayer": 30,
+    "Jacket": 48,
+    "JacketHemCord": 12,
+    "Collar": 24,
+    "Hood": 40,
+    "HoodBrim": 11,
+    "HoodCordLock": 28,
+    "ZipperTape": 14,
+    "ZipperTooth": 42,
+    "ZipperPull": 6,
+    "ChestPocket_L": 6,
+    "ChestPocketFlap_L": 6,
+    "ChestPocketSnap_L": 14,
+    "ChestPocket_R": 6,
+    "ChestPocketFlap_R": 6,
+    "ChestPocketSnap_R": 14,
+    "VestPanel": 22,
+    "VestStripe": 21,
+    "ChestStrap": 30,
+    "StrapBuckleAmber": 6,
+    "StrapBuckle": 6,
+    "ToolPouch": 6,
+    "ToolPouchFlap": 6,
+    "ToolPouchSnap": 14,
+    "Belt": 12,
+    "BeltBuckle": 6,
+    "BeltLoop": 24,
+    "Sleeve": 80,
+    "ForearmGuard": 32,
+    "GuardBuckle": 12,
+    "GloveCuff": 16,
+    "Glove": 48,
+    "Pants": 24,
+    "PantsLeg": 48,
+    "ThighPocket": 12,
+    "ThighPocketFlap": 12,
+    "ThighPocketSnap": 28,
+    "KneePad": 36,
+    "BootShaft": 48,
+    "BootCuff": 16,
+    "BootFoot": 12,
+    "BootSole": 12,
+    "BootTread": 48,
+    "BootCordLock": 28,
+    "ShoulderLightMount": 6,
+    "ShoulderLight": 20,
+    "ShoulderLightLens": 8,
+    "Earpiece": 18,
+    "EarphoneBoom": 4,
+    "MicTip": 18
+  },
+  "total_faces": 1046,
+  "total_verts": 1323,
+  "tris": 180,
+  "quads": 866,
+  "ngons": 0,
+  "ngons_expected": 0,
+  "ngons_ok": true,
+  "faces_expected": 1046,
+  "faces_match": true,
+  "face_limit": 1500,
+  "faces_ok": true,
+  "duplicate_verts": 0,
+  "loose_edges": 0,
+  "nonmanifold_edges": 0,
+  "degenerate_faces": 0,
+  "boundary_edges_total": 472,
+  "boundary_edges_closed_solids": 0,
+  "inverted_normals": 0,
+  "inverted_normals_solids": 0,
+  "inverted_normals_flat_patches": 0,
+  "topo_ok": true,
+  "uv_parts_with_layer": 58,
+  "uv_parts": [
+    "BeltBuckle",
+    "BeltLoop",
+    "BeltLoop.001",
+    "BeltLoop.002",
+    "BeltLoop.003",
+    "BootCordLock",
+    "BootCordLock.001",
+    "BootTread",
+    "BootTread.001",
+    "BootTread.002",
+    "BootTread.003",
+    "BootTread.004",
+    "BootTread.005",
+    "BootTread.006",
+    "BootTread.007",
+    "ChestPocketFlap_L",
+    "ChestPocketFlap_R",
+    "ChestPocketSnap_L",
+    "ChestPocketSnap_R",
+    "ChestPocket_L",
+    "ChestPocket_R",
+    "ChestStrap",
+    "ChestStrap.001",
+    "ChestStrap.002",
+    "ChestStrap.003",
+    "ChestStrap.004",
+    "Earpiece",
+    "Glove",
+    "Glove.001",
+    "GuardBuckle",
+    "GuardBuckle.001",
+    "Hood",
+    "HoodCordLock",
+    "HoodCordLock.001",
+    "KneePad",
+    "KneePad.001",
+    "MicTip",
+    "ShoulderLight",
+    "ShoulderLightMount",
+    "StrapBuckle",
+    "StrapBuckleAmber",
+    "ThighPocket",
+    "ThighPocket.001",
+    "ThighPocketFlap",
+    "ThighPocketFlap.001",
+    "ThighPocketSnap",
+    "ThighPocketSnap.001",
+    "ToolPouch",
+    "ToolPouchFlap",
+    "ToolPouchSnap",
+    "ZipperPull",
+    "ZipperTooth",
+    "ZipperTooth.001",
+    "ZipperTooth.002",
+    "ZipperTooth.003",
+    "ZipperTooth.004",
+    "ZipperTooth.005",
+    "ZipperTooth.006"
+  ],
+  "uv_out_of_bounds": 0,
+  "empty_material_slots": 0,
+  "mannequin_faces": 418,
+  "gaps": {
+    "jacket_vs_inner": {
+      "min": 0.019,
+      "median": 0.0245,
+      "samples": 60,
+      "ok": true
+    },
+    "collar_vs_neck": {
+      "min": 0.04,
+      "median": 0.0599,
+      "samples": 36,
+      "ok": true
+    },
+    "zipperTape_vs_jacket": {
+      "min": 0.0052,
+      "median": 0.0108,
+      "samples": 24,
+      "ok": true
+    },
+    "vestPanel_vs_jacket": {
+      "min": 0.0175,
+      "median": 0.0215,
+      "samples": 36,
+      "ok": true
+    },
+    "belt_vs_jacket": {
+      "min": 0.0146,
+      "median": 0.0418,
+      "samples": 24,
+      "ok": true
+    },
+    "pants_vs_torso": {
+      "min": 0.0288,
+      "median": 0.1731,
+      "samples": 36,
+      "ok": true
+    },
+    "pantsLegL_vs_leg": {
+      "min": 0.021,
+      "median": 0.0344,
+      "samples": 32,
+      "ok": true
+    },
+    "pantsLegR_vs_leg": {
+      "min": 0.021,
+      "median": 0.0344,
+      "samples": 32,
+      "ok": true
+    },
+    "sleeveL_vs_arm": {
+      "min": 0.01,
+      "median": 0.02,
+      "samples": 50,
+      "ok": true
+    },
+    "sleeveR_vs_arm": {
+      "min": 0.01,
+      "median": 0.02,
+      "samples": 50,
+      "ok": true
+    },
+    "guardL_vs_sleeve": {
+      "min": 0.0191,
+      "median": 0.0235,
+      "samples": 24,
+      "ok": true
+    },
+    "guardR_vs_sleeve": {
+      "min": 0.0191,
+      "median": 0.0235,
+      "samples": 24,
+      "ok": true
+    },
+    "gloveL_vs_sleeve": {
+      "min": 0.0063,
+      "median": 0.044,
+      "samples": 20,
+      "ok": true
+    },
+    "gloveR_vs_sleeve": {
+      "min": 0.0063,
+      "median": 0.044,
+      "samples": 20,
+      "ok": true
+    },
+    "bootShaftL_vs_pantsLeg": {
+      "min": 0.0148,
+      "median": 0.0618,
+      "samples": 32,
+      "ok": true
+    },
+    "bootShaftR_vs_pantsLeg": {
+      "min": 0.0148,
+      "median": 0.0618,
+      "samples": 32,
+      "ok": true
+    },
+    "bootShaftL_vs_leg": {
+      "min": 0.0327,
+      "median": 0.0464,
+      "samples": 32,
+      "ok": true
+    },
+    "bootShaftR_vs_leg": {
+      "min": 0.0327,
+      "median": 0.0464,
+      "samples": 32,
+      "ok": true
+    }
+  },
+  "gaps_ok": true,
+  "attachments": {
+    "chestStrap_vs_jacket": {
+      "min": 0.0026,
+      "median": 0.0137,
+      "samples": 8,
+      "ok": false
+    },
+    "toolPouch_vs_jacket": {
+      "min": 0.0132,
+      "median": 0.0625,
+      "samples": 8,
+      "ok": true
+    },
+    "hood_vs_jacket": {
+      "min": 0.0119,
+      "median": 0.2039,
+      "samples": 34,
+      "ok": true
+    },
+    "hood_vs_collar": {
+      "min": 0.0095,
+      "median": 0.1429,
+      "samples": 34,
+      "ok": true
+    },
+    "earpiece_vs_head": {
+      "min": 0.0009,
+      "median": 0.0198,
+      "samples": 14,
+      "ok": false
+    },
+    "shoulderLightMount_vs_jacket": {
+      "min": 0.0114,
+      "median": 0.0656,
+      "samples": 8,
+      "ok": true
+    },
+    "shoulderLight_vs_mount": {
+      "min": 0.0,
+      "median": 0.025,
+      "samples": 16,
+      "ok": false
+    },
+    "beltLoop_vs_belt": {
+      "min": 0.0059,
+      "median": 0.0176,
+      "samples": 8,
+      "ok": true
+    },
+    "bootCuffL_vs_shaft": {
+      "min": 0.003,
+      "median": 0.0067,
+      "samples": 16,
+      "ok": false
+    },
+    "bootCuffR_vs_shaft": {
+      "min": 0.003,
+      "median": 0.0067,
+      "samples": 16,
+      "ok": false
+    }
+  },
+  "protrusions": {
+    "VestStripe": {
+      "lift": 0.0063,
+      "ok": true
+    },
+    "VestStripe.001": {
+      "lift": 0.0063,
+      "ok": true
+    },
+    "VestStripe.002": {
+      "lift": 0.0064,
+      "ok": true
+    },
+    "KneePad": {
+      "lift": 0.0472,
+      "ok": true
+    },
+    "KneePad.001": {
+      "lift": 0.0472,
+      "ok": true
+    },
+    "ZipperTooth": {
+      "lift": 0.0079,
+      "ok": true
+    },
+    "ZipperTooth.001": {
+      "lift": 0.0075,
+      "ok": true
+    },
+    "ZipperTooth.002": {
+      "lift": 0.007,
+      "ok": true
+    },
+    "ZipperTooth.003": {
+      "lift": 0.0065,
+      "ok": true
+    },
+    "ZipperTooth.004": {
+      "lift": 0.006,
+      "ok": true
+    },
+    "ZipperTooth.005": {
+      "lift": 0.0076,
+      "ok": true
+    },
+    "ZipperTooth.006": {
+      "lift": 0.0095,
+      "ok": true
+    },
+    "BootTread": {
+      "lift": 0.0025,
+      "ok": true
+    },
+    "BootTread.001": {
+      "lift": 0.0025,
+      "ok": true
+    },
+    "BootTread.002": {
+      "lift": 0.0025,
+      "ok": true
+    },
+    "BootTread.003": {
+      "lift": 0.0025,
+      "ok": true
+    },
+    "BootTread.004": {
+      "lift": 0.0025,
+      "ok": true
+    },
+    "BootTread.005": {
+      "lift": 0.0025,
+      "ok": true
+    },
+    "BootTread.006": {
+      "lift": 0.0025,
+      "ok": true
+    },
+    "BootTread.007": {
+      "lift": 0.0025,
+      "ok": true
+    }
+  },
+  "protrusions_ok": true,
+  "lens": {
+    "ShoulderLightLens": {
+      "standoff_min": 0.002,
+      "standoff_median": 0.002,
+      "ok": true
+    }
+  },
+  "lens_ok": true,
+  "floating_bad": [],
+  "floating_ok": true,
+  "garment_bbox": {
+    "x": [
+      -0.5,
+      0.5
+    ],
+    "y": [
+      -0.239,
+      0.295
+    ],
+    "z": [
+      0.0,
+      1.621
+    ],
+    "height": 1.621,
+    "width": 0.999
+  },
+  "boot_min_z": 0.0,
+  "ground_ok": true,
+  "hair_top_z": 1.741,
+  "frame_fraction": 0.685,
+  "frame_ok": true,
+  "materials": {
+    "rows": [
+      {
+        "name": "Jacket_Black",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.9,
+        "base_color": [
+          0.009,
+          0.009,
+          0.01
+        ],
+        "ok": true
+      },
+      {
+        "name": "Charcoal",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.042,
+          0.05,
+          0.058
+        ],
+        "ok": true
+      },
+      {
+        "name": "SlateBlue",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.8,
+        "base_color": [
+          0.017,
+          0.021,
+          0.027
+        ],
+        "ok": true
+      },
+      {
+        "name": "Amber",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.4,
+        "base_color": [
+          0.807,
+          0.109,
+          0.001
+        ],
+        "ok": true
+      },
+      {
+        "name": "Gunmetal",
+        "found": true,
+        "metallic": 0.8,
+        "roughness": 0.3,
+        "base_color": [
+          0.195,
+          0.212,
+          0.235
+        ],
+        "ok": true
+      },
+      {
+        "name": "Skin",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.7,
+        "base_color": [
+          0.694,
+          0.381,
+          0.209
+        ],
+        "ok": true
+      },
+      {
+        "name": "Hair_Dark",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.85,
+        "base_color": [
+          0.023,
+          0.026,
+          0.033
+        ],
+        "ok": true
+      },
+      {
+        "name": "Eye_Dark",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.003,
+          0.003,
+          0.003
+        ],
+        "ok": true
+      }
+    ],
+    "all_ok": true
+  },
+  "warnings": [
+    "bootCuff_vs_shaft: 靴口束带与靴筒最小间隙 0.0030 米（层间隙标准 ≥0.005）：按构造是束口紧箍——束带顶环半径 0.138 米 vs 靴筒顶环 0.135 米，差值正好 0.003 米，两环同轴同角、未穿插；中位 0.0067 米（底环 0.140 vs 靴筒约 0.133）。属设计意图，不判定失败；下次若要放宽可把束带半径 +0.002 米。",
+    "bootTread_overhang: 靴底防滑纹条嵌在靴底楔形里（盒半宽 0.0875 米 vs 靴底半宽 0.085 米），侧边外凸 0.0025 米、底面与靴底底面齐平 （z = 0，落地）；纹条在侧面只露一条细边，下次可把纹条加宽到 0.19 米或下移 0.002 米，让防滑纹从侧面更明显。"
+  ],
+  "overall_pass": true
+}
