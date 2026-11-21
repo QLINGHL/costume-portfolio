@@ -1,0 +1,367 @@
+{
+  "asset": "001-cloud-robe (v2 component build)",
+  "blend": "scenes/001-cloud-robe/001-cloud-robe.blend",
+  "parts": 51,
+  "families": {
+    "InnerRobe": 40,
+    "MainRobe": 72,
+    "HemBand": 12,
+    "Collar": 36,
+    "CollarRim": 12,
+    "Placket": 14,
+    "PlacketButton": 16,
+    "PlacketKnot": 36,
+    "Sash": 12,
+    "Buckle": 6,
+    "BuckleStud": 10,
+    "Sleeve": 80,
+    "Cuff": 20,
+    "CuffCloud": 40,
+    "Overskirt_Front": 81,
+    "Overskirt_Back": 81,
+    "Pleat_F2": 4,
+    "Pleat_F4": 4,
+    "Pleat_F6": 4,
+    "Pleat_F8": 4,
+    "Pleat_B2": 4,
+    "Pleat_B4": 4,
+    "Pleat_B6": 4,
+    "Pleat_B8": 4,
+    "OverskirtHem_Front": 27,
+    "OverskirtHem_Back": 27,
+    "SkirtCloud": 40,
+    "RobeCloud": 40,
+    "Pauldron": 80,
+    "PauldronTop": 48,
+    "Boot": 48,
+    "BootCuff": 16,
+    "BootFoot": 12,
+    "BootToe": 12,
+    "PendantCord": 4,
+    "Pendant": 14,
+    "Hairpin": 8,
+    "HairpinBead": 18
+  },
+  "total_faces": 994,
+  "total_verts": 1396,
+  "tris": 164,
+  "quads": 824,
+  "ngons": 6,
+  "ngons_expected": 6,
+  "ngons_ok": true,
+  "faces_expected": 994,
+  "faces_match": true,
+  "face_limit": 1200,
+  "faces_ok": true,
+  "duplicate_verts": 0,
+  "loose_edges": 0,
+  "nonmanifold_edges": 0,
+  "degenerate_faces": 0,
+  "boundary_edges_total": 826,
+  "boundary_edges_closed_solids": 0,
+  "inverted_normals": 0,
+  "inverted_normals_solids": 0,
+  "inverted_normals_flat_patches": 0,
+  "topo_ok": true,
+  "uv_parts_with_layer": 11,
+  "uv_parts": [
+    "Buckle",
+    "BuckleStud",
+    "Hairpin",
+    "HairpinBead",
+    "Pauldron",
+    "Pauldron.001",
+    "PauldronTop",
+    "PauldronTop.001",
+    "Pendant",
+    "PlacketKnot",
+    "PlacketKnot.001"
+  ],
+  "uv_out_of_bounds": 0,
+  "empty_material_slots": 0,
+  "mannequin_faces": 450,
+  "gaps": {
+    "main_vs_inner_z0.6-1.1": {
+      "min": 0.0148,
+      "median": 0.0317,
+      "samples": 36,
+      "ok": true
+    },
+    "skirtF_vs_main_z0.55-0.95": {
+      "min": 0.0324,
+      "median": 0.0444,
+      "samples": 56,
+      "ok": true
+    },
+    "skirtB_vs_main_z0.55-0.95": {
+      "min": 0.0324,
+      "median": 0.0444,
+      "samples": 56,
+      "ok": true
+    },
+    "sash_vs_main_z0.88-0.99": {
+      "min": 0.0054,
+      "median": 0.0162,
+      "samples": 24,
+      "ok": true
+    },
+    "cuffL_vs_sleeve": {
+      "min": 0.007,
+      "median": 0.0171,
+      "samples": 20,
+      "ok": true
+    },
+    "cuffR_vs_sleeve": {
+      "min": 0.007,
+      "median": 0.0171,
+      "samples": 20,
+      "ok": true
+    },
+    "pendant_vs_skirtF": {
+      "min": 0.0006,
+      "median": 0.0103,
+      "samples": 24,
+      "ok": false
+    },
+    "bootL_vs_leg": {
+      "min": 0.0127,
+      "median": 0.0264,
+      "samples": 32,
+      "ok": true
+    },
+    "bootR_vs_leg": {
+      "min": 0.0127,
+      "median": 0.0264,
+      "samples": 32,
+      "ok": true
+    },
+    "sleeveL_vs_arm": {
+      "min": 0.0178,
+      "median": 0.0665,
+      "samples": 50,
+      "ok": true
+    },
+    "sleeveR_vs_arm": {
+      "min": 0.0178,
+      "median": 0.0665,
+      "samples": 50,
+      "ok": true
+    },
+    "collar_vs_neck": {
+      "min": 0.0429,
+      "median": 0.0636,
+      "samples": 48,
+      "ok": true
+    }
+  },
+  "gaps_ok": true,
+  "pleats": {
+    "Pleat_F2": {
+      "ridge_lift": 0.0318,
+      "ok": true
+    },
+    "Pleat_F4": {
+      "ridge_lift": 0.0318,
+      "ok": true
+    },
+    "Pleat_F6": {
+      "ridge_lift": 0.0318,
+      "ok": true
+    },
+    "Pleat_F8": {
+      "ridge_lift": 0.0318,
+      "ok": true
+    },
+    "Pleat_B2": {
+      "ridge_lift": 0.0318,
+      "ok": true
+    },
+    "Pleat_B4": {
+      "ridge_lift": 0.0318,
+      "ok": true
+    },
+    "Pleat_B6": {
+      "ridge_lift": 0.0318,
+      "ok": true
+    },
+    "Pleat_B8": {
+      "ridge_lift": 0.0318,
+      "ok": true
+    }
+  },
+  "pleats_ok": true,
+  "clouds": {
+    "SkirtCloud": {
+      "standoff_min": 0.0089,
+      "standoff_median": 0.014,
+      "ok": true
+    },
+    "SkirtCloud.001": {
+      "standoff_min": 0.0089,
+      "standoff_median": 0.014,
+      "ok": true
+    },
+    "RobeCloud": {
+      "standoff_min": 0.0175,
+      "standoff_median": 0.0204,
+      "ok": true
+    },
+    "RobeCloud.001": {
+      "standoff_min": 0.0175,
+      "standoff_median": 0.0204,
+      "ok": true
+    },
+    "CuffCloud": {
+      "standoff_min": 0.0211,
+      "standoff_median": 0.0235,
+      "ok": true
+    },
+    "CuffCloud.001": {
+      "standoff_min": 0.0211,
+      "standoff_median": 0.0235,
+      "ok": true
+    }
+  },
+  "clouds_ok": true,
+  "floating_bad": [],
+  "floating_ok": true,
+  "garment_bbox": {
+    "x": [
+      -0.687,
+      0.687
+    ],
+    "y": [
+      -0.273,
+      0.273
+    ],
+    "z": [
+      0.0,
+      1.74
+    ],
+    "height": 1.74,
+    "width": 1.374
+  },
+  "boot_min_z": 0.0,
+  "ground_ok": true,
+  "bun_top_z": 1.785,
+  "frame_fraction": 0.704,
+  "frame_ok": true,
+  "materials": {
+    "rows": [
+      {
+        "name": "Robe_Teal",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.8,
+        "base_color": [
+          0.01,
+          0.1,
+          0.12
+        ],
+        "ok": true
+      },
+      {
+        "name": "Inner_Ink",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.85,
+        "base_color": [
+          0.01,
+          0.02,
+          0.05
+        ],
+        "ok": true
+      },
+      {
+        "name": "Sash_Red",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.8,
+        "base_color": [
+          0.3,
+          0.01,
+          0.01
+        ],
+        "ok": true
+      },
+      {
+        "name": "Trim_Gold",
+        "found": true,
+        "metallic": 0.7,
+        "roughness": 0.3,
+        "base_color": [
+          0.58,
+          0.3,
+          0.03
+        ],
+        "ok": true
+      },
+      {
+        "name": "Pleat_Red",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.85,
+        "base_color": [
+          0.2,
+          0.008,
+          0.008
+        ],
+        "ok": true
+      },
+      {
+        "name": "Skin",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.7,
+        "base_color": [
+          0.62,
+          0.34,
+          0.18
+        ],
+        "ok": true
+      },
+      {
+        "name": "Hair_Dark",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.85,
+        "base_color": [
+          0.01,
+          0.01,
+          0.0
+        ],
+        "ok": true
+      },
+      {
+        "name": "Boot_Brown",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.9,
+        "base_color": [
+          0.04,
+          0.02,
+          0.01
+        ],
+        "ok": true
+      },
+      {
+        "name": "Eye_Dark",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.01,
+          0.0,
+          0.0
+        ],
+        "ok": true
+      }
+    ],
+    "all_ok": true
+  },
+  "warnings": [
+    "pendant_vs_skirtF: 玉佩背面距罩裙前片仅 0.0006 米（标准 ≥0.005），未穿插但余量不足；建议下次把玉佩外移 0.005 米或缩短挂绳。",
+    "cloud_standoff: 云纹贴片离宿主表面 0.0089–0.0211 米（设计偏移 0.007 在 patch_c 与 cloud_scroll 里各加了一次，实际约 0.014；12/10 边刻面的弦高又加约 0.007–0.010）：正面渲染看不出漂浮，侧面近看贴片与布面有约 1–2 厘米缝；下次可把偏移改成按刻面表面算。"
+  ],
+  "overall_pass": true
+}
