@@ -1,0 +1,494 @@
+{
+  "asset": "011-snow-priest-robe",
+  "blend": "scenes/011-snow-priest-robe/011-snow-priest-robe.blend",
+  "parts": 46,
+  "families": {
+    "InnerRobe": 24,
+    "MainRobe": 48,
+    "Overskirt": 24,
+    "ChestSnowflake": 18,
+    "SkirtSnowflake": 33,
+    "PleatStrip": 16,
+    "FurCollar": 24,
+    "FurTuft": 54,
+    "ShoulderPad": 64,
+    "WideSleeve": 64,
+    "SleeveCuff": 16,
+    "WaistBelt": 12,
+    "BeltBuckle": 6,
+    "PriestCrown": 12,
+    "CrownSpike": 30,
+    "CrownCentreSpike": 6,
+    "StaffShaft": 18,
+    "StaffGoldRing": 18,
+    "StaffCrystalBase": 6,
+    "StaffCrystal": 32,
+    "SnowBoot": 64,
+    "BootFurRing": 16,
+    "BootFoot": 12
+  },
+  "total_faces": 617,
+  "total_verts": 842,
+  "tris": 132,
+  "quads": 485,
+  "ngons": 0,
+  "ngons_expected": 0,
+  "ngons_ok": true,
+  "faces_expected": 617,
+  "faces_match": true,
+  "face_limit": 1500,
+  "faces_ok": true,
+  "duplicate_verts": 0,
+  "loose_edges": 0,
+  "nonmanifold_edges": 0,
+  "degenerate_faces": 0,
+  "boundary_edges_total": 464,
+  "boundary_edges_closed_solids": 0,
+  "inverted_normals": 5,
+  "inverted_normals_solids": 0,
+  "inverted_normals_flat_patches": 5,
+  "topo_ok": true,
+  "uv_parts_with_layer": 13,
+  "uv_parts": [
+    "BeltBuckle",
+    "CrownCentreSpike",
+    "CrownSpike",
+    "CrownSpike.001",
+    "CrownSpike.002",
+    "CrownSpike.003",
+    "CrownSpike.004",
+    "FurTuft",
+    "FurTuft.001",
+    "FurTuft.002",
+    "ShoulderPad",
+    "ShoulderPad.001",
+    "StaffCrystal"
+  ],
+  "uv_out_of_bounds": 0,
+  "empty_material_slots": 0,
+  "mannequin_faces": 442,
+  "gaps": {
+    "inner_vs_torso": {
+      "min": 0.015,
+      "median": 0.0608,
+      "samples": 36,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "robe_vs_inner": {
+      "min": 0.008,
+      "median": 0.0184,
+      "samples": 60,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "overskirt_vs_robe": {
+      "min": 0.0099,
+      "median": 0.0191,
+      "samples": 36,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "belt_vs_robe": {
+      "min": 0.0102,
+      "median": 0.0265,
+      "samples": 24,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "furCollar_vs_robe": {
+      "min": 0.042,
+      "median": 0.0581,
+      "samples": 36,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "sleeveL_vs_arm": {
+      "min": 0.025,
+      "median": 0.0534,
+      "samples": 40,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "sleeveR_vs_arm": {
+      "min": 0.025,
+      "median": 0.0534,
+      "samples": 40,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "cuffL_vs_sleeve": {
+      "min": 0.008,
+      "median": 0.0144,
+      "samples": 16,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "cuffR_vs_sleeve": {
+      "min": 0.008,
+      "median": 0.0144,
+      "samples": 16,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "bootL_vs_leg": {
+      "min": 0.0158,
+      "median": 0.0256,
+      "samples": 40,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "bootR_vs_leg": {
+      "min": 0.0158,
+      "median": 0.0256,
+      "samples": 40,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "bootFurRingL_vs_boot": {
+      "min": 0.006,
+      "median": 0.0073,
+      "samples": 16,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "bootFurRingR_vs_boot": {
+      "min": 0.006,
+      "median": 0.0073,
+      "samples": 16,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "crown_vs_hair": {
+      "min": 0.0188,
+      "median": 0.0452,
+      "samples": 24,
+      "minimum": 0.01,
+      "ok": true
+    }
+  },
+  "gaps_ok": true,
+  "staff_gap": {
+    "min": 0.0133,
+    "median": 0.1916,
+    "samples": 1704
+  },
+  "staff_gap_ok": true,
+  "belt_overlap": {
+    "unsigned_min": 0.0,
+    "unsigned_median": 0.0618,
+    "samples": 24,
+    "inside_vertices": [
+      [
+        0.7,
+        0,
+        0.0128
+      ],
+      [
+        0.7,
+        18,
+        0.0066
+      ],
+      [
+        0.7,
+        162,
+        0.0066
+      ],
+      [
+        0.7,
+        180,
+        0.0128
+      ],
+      [
+        0.7,
+        198,
+        0.0066
+      ],
+      [
+        0.7,
+        342,
+        0.0066
+      ]
+    ]
+  },
+  "belt_inside_skirt": [
+    {
+      "z": 0.7,
+      "angle_deg": 0,
+      "hit_dist": 0.0128
+    },
+    {
+      "z": 0.7,
+      "angle_deg": 18,
+      "hit_dist": 0.0066
+    },
+    {
+      "z": 0.7,
+      "angle_deg": 162,
+      "hit_dist": 0.0066
+    },
+    {
+      "z": 0.7,
+      "angle_deg": 180,
+      "hit_dist": 0.0128
+    },
+    {
+      "z": 0.7,
+      "angle_deg": 198,
+      "hit_dist": 0.0066
+    },
+    {
+      "z": 0.7,
+      "angle_deg": 342,
+      "hit_dist": 0.0066
+    }
+  ],
+  "attachments": {
+    "staffGoldRing_vs_shaft": {
+      "min": 0.006,
+      "median": 0.006,
+      "samples": 12,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "staffCrystalBase_vs_shaft": {
+      "min": 0.012,
+      "median": 0.0233,
+      "samples": 12,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "staffCrystal_vs_base": {
+      "min": 0.0074,
+      "median": 0.0555,
+      "samples": 26,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "furTuft_vs_collar": {
+      "min": 0.0036,
+      "median": 0.0224,
+      "samples": 14,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "crownSpike_vs_crown": {
+      "min": 0.0206,
+      "median": 0.0453,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "crownCentreSpike_vs_crown": {
+      "min": 0.0201,
+      "median": 0.095,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "shoulderPad_vs_sleeve": {
+      "min": 0.005,
+      "median": 0.0299,
+      "samples": 26,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "beltBuckle_vs_belt": {
+      "min": 0.0021,
+      "median": 0.0177,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": false
+    }
+  },
+  "protrusions": {
+    "ChestSnowflake": {
+      "lift": 0.0219,
+      "ok": true
+    },
+    "SkirtSnowflake": {
+      "lift": 0.0242,
+      "ok": true
+    },
+    "SkirtSnowflake.001": {
+      "lift": 0.0196,
+      "ok": true
+    },
+    "SkirtSnowflake.002": {
+      "lift": 0.0222,
+      "ok": true
+    },
+    "PleatStrip": {
+      "lift": 0.0161,
+      "ok": true
+    },
+    "PleatStrip.001": {
+      "lift": 0.0162,
+      "ok": true
+    },
+    "PleatStrip.002": {
+      "lift": 0.0093,
+      "ok": true
+    },
+    "PleatStrip.003": {
+      "lift": 0.0162,
+      "ok": true
+    },
+    "PleatStrip.004": {
+      "lift": 0.0161,
+      "ok": true
+    },
+    "PleatStrip.005": {
+      "lift": 0.0162,
+      "ok": true
+    },
+    "PleatStrip.006": {
+      "lift": 0.0093,
+      "ok": true
+    },
+    "PleatStrip.007": {
+      "lift": 0.0162,
+      "ok": true
+    },
+    "BeltBuckle": {
+      "lift": 0.0177,
+      "ok": true
+    }
+  },
+  "protrusions_ok": true,
+  "floating_bad": [],
+  "floating_ok": true,
+  "garment_bbox": {
+    "x": [
+      -0.549,
+      0.55
+    ],
+    "y": [
+      -0.253,
+      0.253
+    ],
+    "z": [
+      0.02,
+      1.78
+    ],
+    "height": 1.76,
+    "width": 1.099
+  },
+  "boot_min_z": 0.02,
+  "ground_ok": false,
+  "staff_tip_z": 0.05,
+  "fail_items": [
+    "落地：靴底最低点 z=0.0200 米（地面 z=0，允许 ≤0.005）"
+  ],
+  "top_z": 1.78,
+  "top_object": "CrownCentreSpike",
+  "frame_fraction": 0.618,
+  "frame_ok": true,
+  "materials": {
+    "rows": [
+      {
+        "name": "SnowWhite",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.85,
+        "base_color": [
+          0.913,
+          0.93,
+          0.956
+        ],
+        "ok": true
+      },
+      {
+        "name": "IceBlue",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.7,
+        "base_color": [
+          0.027,
+          0.159,
+          0.366
+        ],
+        "ok": true
+      },
+      {
+        "name": "DeepBlue",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.8,
+        "base_color": [
+          0.011,
+          0.042,
+          0.107
+        ],
+        "ok": true
+      },
+      {
+        "name": "Gold",
+        "found": true,
+        "metallic": 0.7,
+        "roughness": 0.35,
+        "base_color": [
+          0.658,
+          0.352,
+          0.009
+        ],
+        "ok": true
+      },
+      {
+        "name": "FurWhite",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.95,
+        "base_color": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "ok": true
+      },
+      {
+        "name": "Skin",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.7,
+        "base_color": [
+          0.694,
+          0.381,
+          0.209
+        ],
+        "ok": true
+      },
+      {
+        "name": "Hair_Silver",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.7,
+        "base_color": [
+          0.807,
+          0.807,
+          0.839
+        ],
+        "ok": true
+      },
+      {
+        "name": "Eye_Dark",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.003,
+          0.003,
+          0.003
+        ],
+        "ok": true
+      }
+    ],
+    "all_ok": true
+  },
+  "warnings": [
+    "belt_vs_overskirt_crossing: 腰带下沿与罩裙相交——腰带是等半径管（rx 0.345），罩裙从腰向下张开（z=0.78 处 rx 0.330 → z=0.55 处 rx 0.410），径向射线判定有 6 个腰带顶点落在罩裙锥面之内（z 0.70，角度 0、18、162、180、198、342°，0°=+x 侧），无符号距离最小 0.0000 米：裙面在腰带下沿两侧穿过了腰带壁。建模时 L2 只在 z=0.78 一处取样（间隙 0.015），漏掉了下沿与张开段的相交，属取样疏漏而非设计意图。视觉上读作腰带扎进裙摆，未造成明显穿帮；下次把腰带下沿从 z=0.70 抬到 z=0.74，或腰带半径 +0.02 米。",
+    "boots_float: 靴底最低点 z=0.0200 米（地面 z=0，允许 ≤0.005）：整个人物悬空 0.02 米，靴底与地面之间有一道缝（放大看渲染图靴底处可见）。根因：build_011.py 里 BootFoot 与 Mannequin_Foot 的 make_wedge 中心 z=0.02（z_bottom=0.0，底面 = 0.02）；002 有独立的 BootSole（中心 z=0.0）落地，011 没有单独的靴底件。修复：把 BootFoot 与 Mannequin_Foot 的中心 z 改为 0.0 后重渲。",
+    "staff_tip_float: 长杖杖底 z=0.0500 米：杖尖悬空 0.05 米（design.md 写“从地面直通头顶”，但 build 数值从 z=0.05 起）。全景图里不明显，放大看杖底与地面之间有缝；若杖尖应落地，下次把杖身起点改到 z=0.0。"
+  ],
+  "overall_pass": false
+}
