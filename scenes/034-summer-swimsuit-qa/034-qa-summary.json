@@ -1,0 +1,662 @@
+{
+  "asset": "031-summer-swimsuit",
+  "blend": "scenes/031-summer-swimsuit/031-summer-swimsuit.blend",
+  "parts": 34,
+  "families": {
+    "CoralSwimsuit": 48,
+    "CoralBrief": 24,
+    "GoldClasp": 6,
+    "WhiteShirt": 30,
+    "CoralShirtTrim": 15,
+    "GoldShirtButton": 24,
+    "WhiteSleeve": 80,
+    "GoldNecklace": 10,
+    "WhiteHatBrim": 72,
+    "WhiteHatCrown": 72,
+    "NavyHatBand": 16,
+    "DarkSunglassLens": 12,
+    "GoldSunglassBridge": 6,
+    "WhiteSarong": 16,
+    "WhiteSarongKnot": 32,
+    "GoldKnotPin": 6,
+    "NavyToteBag": 6,
+    "NavyToteHandle": 12,
+    "GoldToteClasp": 6,
+    "NavySandalSole": 12,
+    "NavyToeStrap": 12,
+    "NavyAnkleStrap": 20,
+    "GoldEarring": 36,
+    "BlueHatPin": 6
+  },
+  "total_faces": 579,
+  "total_verts": 669,
+  "tris": 152,
+  "quads": 427,
+  "ngons": 0,
+  "ngons_expected": 0,
+  "ngons_ok": true,
+  "faces_expected": 579,
+  "faces_match": true,
+  "face_limit": 1500,
+  "faces_ok": true,
+  "duplicate_verts": 0,
+  "loose_edges": 0,
+  "nonmanifold_edges": 0,
+  "degenerate_faces": 0,
+  "boundary_edges_total": 226,
+  "boundary_edges_closed_solids": 0,
+  "inverted_normals": 0,
+  "inverted_normals_solids": 0,
+  "inverted_normals_flat_patches": 0,
+  "topo_ok": true,
+  "uv_parts_with_layer": 20,
+  "uv_parts": [
+    "BlueHatPin",
+    "DarkSunglassLens",
+    "DarkSunglassLens.001",
+    "GoldClasp",
+    "GoldEarring",
+    "GoldEarring.001",
+    "GoldKnotPin",
+    "GoldShirtButton",
+    "GoldShirtButton.001",
+    "GoldShirtButton.002",
+    "GoldShirtButton.003",
+    "GoldSunglassBridge",
+    "GoldToteClasp",
+    "NavyToeStrap",
+    "NavyToeStrap.001",
+    "NavyToteBag",
+    "NavyToteHandle",
+    "NavyToteHandle.001",
+    "WhiteHatCrown",
+    "WhiteSarongKnot"
+  ],
+  "uv_out_of_bounds": 0,
+  "empty_material_slots": 0,
+  "mannequin_faces": 442,
+  "gaps": {
+    "swimsuit_vs_torso": {
+      "min": 0.0054,
+      "median": 0.0159,
+      "samples": 60,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "brief_vs_legL": {
+      "min": 0.0044,
+      "median": 0.085,
+      "samples": 36,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "brief_vs_legR": {
+      "min": 0.0044,
+      "median": 0.085,
+      "samples": 36,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "shirt_vs_swimsuit": {
+      "min": 0.0199,
+      "median": 0.0486,
+      "samples": 48,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "sleeveL_vs_arm": {
+      "min": 0.005,
+      "median": 0.0361,
+      "samples": 32,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "sleeveR_vs_arm": {
+      "min": 0.005,
+      "median": 0.0361,
+      "samples": 32,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "necklace_vs_neck": {
+      "min": 0.017,
+      "median": 0.0254,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "hatCrown_vs_hair": {
+      "min": 0.0132,
+      "median": 0.0451,
+      "samples": 44,
+      "minimum": 0.005,
+      "ok": true,
+      "buried": 18
+    },
+    "hatBand_vs_crown": {
+      "min": 0.0006,
+      "median": 0.0187,
+      "samples": 32,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "hatBrim_vs_crown": {
+      "min": 0.0986,
+      "median": 0.1112,
+      "samples": 50,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "sarong_vs_brief": {
+      "min": 0.008,
+      "median": 0.0145,
+      "samples": 27,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "sarong_vs_swimsuit": {
+      "min": 0.0073,
+      "median": 0.0168,
+      "samples": 27,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "ankleStrapL_vs_leg": {
+      "min": 0.0121,
+      "median": 0.0193,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "ankleStrapR_vs_leg": {
+      "min": 0.0121,
+      "median": 0.0193,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "sandalSoleL_vs_foot": {
+      "min": 0.0086,
+      "median": 0.0086,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "sandalSoleR_vs_foot": {
+      "min": 0.0086,
+      "median": 0.0086,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": true
+    }
+  },
+  "gaps_ok": false,
+  "brim_vs_hair": {
+    "vertex_min": 0.1202,
+    "vertex_median": 0.1468,
+    "vertex_samples": 50,
+    "disc_z": 1.615,
+    "disc_radius": 0.36,
+    "hair_radius_at_disc_z": 0.2179,
+    "crossing_radius_max": 0.22,
+    "crown_radius_at_disc_z": 0.2586,
+    "crossing_hidden_inside_crown": true,
+    "ok": true
+  },
+  "brim_disc_vs_crown_min": 0.0001,
+  "attachments": {
+    "clasp_vs_swimsuit": {
+      "min": 0.0057,
+      "median": 0.007,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "button_vs_shirt": {
+      "min": 0.0024,
+      "median": 0.0132,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "button.001_vs_shirt": {
+      "min": 0.0023,
+      "median": 0.0132,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "button.002_vs_shirt": {
+      "min": 0.0025,
+      "median": 0.0132,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "button.003_vs_shirt": {
+      "min": 0.0024,
+      "median": 0.0132,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "shirtTrim_vs_shirt": {
+      "min": 0.0059,
+      "median": 0.0063,
+      "samples": 32,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "lensL_vs_swimsuit": {
+      "min": 0.006,
+      "median": 0.0215,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "lensR_vs_swimsuit": {
+      "min": 0.0058,
+      "median": 0.0212,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "bridge_vs_swimsuit": {
+      "min": 0.0101,
+      "median": 0.02,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "knot_vs_sarong": {
+      "min": 0.0002,
+      "median": 0.0145,
+      "samples": 26,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "knotPin_vs_knot": {
+      "min": 0.0031,
+      "median": 0.0074,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "toteClasp_vs_bag": {
+      "min": 0.003,
+      "median": 0.009,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "toteBag_vs_handle": {
+      "min": 0.0,
+      "median": 0.04,
+      "samples": 84,
+      "minimum": 0.005,
+      "ok": true,
+      "points_inside_bag": 12,
+      "points_total": 84
+    },
+    "toteBag_vs_handle.001": {
+      "min": 0.0,
+      "median": 0.04,
+      "samples": 84,
+      "minimum": 0.005,
+      "ok": true,
+      "points_inside_bag": 12,
+      "points_total": 84
+    },
+    "toeStrapL_vs_foot": {
+      "min": 0.005,
+      "median": 0.005,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "toeStrapR_vs_foot": {
+      "min": 0.005,
+      "median": 0.005,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "earringL_vs_head": {
+      "min": 0.0055,
+      "median": 0.0192,
+      "samples": 14,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "earringR_vs_head": {
+      "min": 0.0055,
+      "median": 0.0192,
+      "samples": 14,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "hatPin_vs_hatBand": {
+      "min": 0.0054,
+      "median": 0.025,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": true
+    }
+  },
+  "protrusions": {
+    "GoldClasp": {
+      "lift": 0.0081,
+      "ok": true,
+      "host": "CoralSwimsuit",
+      "lo": 0.005,
+      "hi": 0.03
+    },
+    "CoralShirtTrim": {
+      "lift": 0.0068,
+      "ok": true,
+      "host": "WhiteShirt",
+      "lo": 0.004,
+      "hi": 0.015
+    },
+    "GoldShirtButton": {
+      "lift": 0.0135,
+      "ok": true,
+      "host": "WhiteShirt",
+      "lo": 0.002,
+      "hi": 0.03
+    },
+    "GoldShirtButton.001": {
+      "lift": 0.0135,
+      "ok": true,
+      "host": "WhiteShirt",
+      "lo": 0.002,
+      "hi": 0.03
+    },
+    "GoldShirtButton.002": {
+      "lift": 0.0135,
+      "ok": true,
+      "host": "WhiteShirt",
+      "lo": 0.002,
+      "hi": 0.03
+    },
+    "GoldShirtButton.003": {
+      "lift": 0.0136,
+      "ok": true,
+      "host": "WhiteShirt",
+      "lo": 0.002,
+      "hi": 0.03
+    },
+    "BlueHatPin": {
+      "lift": 0.0292,
+      "ok": true,
+      "host": "NavyHatBand",
+      "lo": 0.005,
+      "hi": 0.03
+    },
+    "GoldEarring": {
+      "lift": 0.0303,
+      "ok": true,
+      "host": "Mannequin_Head",
+      "lo": 0.005,
+      "hi": 0.035
+    },
+    "GoldEarring.001": {
+      "lift": 0.0303,
+      "ok": true,
+      "host": "Mannequin_Head",
+      "lo": 0.005,
+      "hi": 0.035
+    },
+    "GoldKnotPin": {
+      "lift": 0.0137,
+      "ok": true,
+      "host": "WhiteSarongKnot",
+      "lo": 0.005,
+      "hi": 0.03
+    },
+    "GoldToteClasp": {
+      "lift": 0.009,
+      "ok": true,
+      "host": "NavyToteBag",
+      "lo": 0.005,
+      "hi": 0.03
+    },
+    "DarkSunglassLens": {
+      "lift": 0.034,
+      "analytic": 0.0296,
+      "ok": true,
+      "host": "CoralSwimsuit (ideal ellipse)",
+      "lo": 0.0236,
+      "hi": 0.0356
+    },
+    "DarkSunglassLens.001": {
+      "lift": 0.0338,
+      "analytic": 0.0296,
+      "ok": true,
+      "host": "CoralSwimsuit (ideal ellipse)",
+      "lo": 0.0236,
+      "hi": 0.0356
+    },
+    "GoldSunglassBridge": {
+      "lift": 0.0205,
+      "ok": true,
+      "host": "CoralSwimsuit",
+      "lo": 0.005,
+      "hi": 0.03
+    },
+    "NavyToeStrap": {
+      "lift": 0.0071,
+      "ok": true,
+      "host": "Mannequin_Foot",
+      "lo": 0.005,
+      "hi": 0.03
+    },
+    "NavyToeStrap.001": {
+      "lift": 0.0071,
+      "ok": true,
+      "host": "Mannequin_Foot.001",
+      "lo": 0.005,
+      "hi": 0.03
+    }
+  },
+  "protrusions_ok": true,
+  "earring_ideal_relief": 0.0161,
+  "handle_through_palm": {
+    "hx_0.36": {
+      "edge_sampled_min": 0.0004,
+      "edge_samples": 84,
+      "points_inside_hand": 42,
+      "points_total": 84
+    },
+    "hx_0.48": {
+      "edge_sampled_min": 0.0005,
+      "edge_samples": 84,
+      "points_inside_hand": 22,
+      "points_total": 84
+    },
+    "hand_z": [
+      0.607,
+      0.743
+    ],
+    "handle_z": [
+      0.57,
+      0.67
+    ],
+    "z_overlap": [
+      0.607,
+      0.67
+    ],
+    "ok": true
+  },
+  "sunglasses": {
+    "lens_z": [
+      1.155,
+      1.205
+    ],
+    "eye_z": [
+      1.495,
+      1.555
+    ],
+    "lens_z_below_eye_z": true,
+    "lens_y_most_negative": -0.164,
+    "swimsuit_front_y_at_lens_z": -0.1431,
+    "lens_in_front_of_swimsuit": true,
+    "ok": true
+  },
+  "bandeau": {
+    "swimsuit_top_z": 1.32,
+    "torso_top_z": 1.28,
+    "top_ring_covers_torso_cap": true,
+    "swimsuit_vs_torso_min_gap": 0.0054,
+    "ok": true
+  },
+  "floating_bad": [],
+  "floating_ok": true,
+  "garment_bbox": {
+    "x": [
+      -0.467,
+      0.52
+    ],
+    "y": [
+      -0.36,
+      0.36
+    ],
+    "z": [
+      0.0,
+      1.773
+    ],
+    "height": 1.773,
+    "width": 0.987
+  },
+  "sole_min_z": 0.0,
+  "ground_ok": true,
+  "foot_min_z": 0.0,
+  "fail_items": [
+    "层间隙（见第 4.1 节不通过项）"
+  ],
+  "top_z": 1.773,
+  "top_object": "WhiteHatCrown",
+  "frame_fraction": 0.616,
+  "frame_ok": true,
+  "materials": {
+    "rows": [
+      {
+        "name": "Coral",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.808,
+          0.102,
+          0.045
+        ],
+        "ok": true
+      },
+      {
+        "name": "Cream",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.914,
+          0.863,
+          0.791
+        ],
+        "ok": true
+      },
+      {
+        "name": "Navy",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.014,
+          0.023,
+          0.058
+        ],
+        "ok": true
+      },
+      {
+        "name": "Gold",
+        "found": true,
+        "metallic": 0.6,
+        "roughness": 0.35,
+        "base_color": [
+          0.657,
+          0.351,
+          0.009
+        ],
+        "ok": true
+      },
+      {
+        "name": "Hair_Black",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.7,
+        "base_color": [
+          0.011,
+          0.011,
+          0.015
+        ],
+        "ok": true
+      },
+      {
+        "name": "LightBlue",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.212,
+          0.479,
+          0.807
+        ],
+        "ok": true
+      },
+      {
+        "name": "DarkLens",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.3,
+        "base_color": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "ok": true
+      },
+      {
+        "name": "Skin",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.7,
+        "base_color": [
+          0.694,
+          0.381,
+          0.209
+        ],
+        "ok": true
+      },
+      {
+        "name": "Eye_Dark",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.003,
+          0.003,
+          0.003
+        ],
+        "ok": true
+      }
+    ],
+    "all_ok": true
+  },
+  "warnings": [
+    "brim_disc_crosses_hair: 遮阳帽檐圆盘（z 1.615，r 0.36）与发顶椭球相交，相交环最大半径 0.220 米（发顶在该高度半径 0.2179 米）；相交环藏在帽顶球内（帽顶在该高度半径 0.2586 米），正面不可见，属戴帽构造、不是穿帮；檐盘顶点离发顶最近 0.1202 米。下次若要完全避开，可把檐面抬到 z 1.66 以上或把发顶压扁 0.70。",
+    "earring_relief_faceting: 金耳钉离头面最远点 0.0303 米（设计浮雕 0.019）：人偶头是 10×8 粗球面，耳钉所贴的面片比理想椭球面内收约 0.011 米，网格实测值含该面片内收；按理想椭球面算浮雕为 0.0161 米，与设计值 0.019 一致。耳钉半嵌头面（最小距离 0.0055 米），读作金耳钉，无漂浮。",
+    "[硬检查不通过] brief_tight_fit: 泳装下摆 vs 腿最小间隙 0.0044 米（0.005 构造线之下 0.0006 米）：设计环表在 θ=0° 方向算得 0.0072 米（下摆底环 rx 0.236 vs 腿外沿 0.2288），但 12 边形下摆 vs 6 边形腿的刻面使底环 z 0.46 对角顶点（±0.2044, ±0.061）离腿面只有 0.0044 米。正间隙、无相交、无视觉缺陷（031 v2 目视通过）；下次把下摆底环 rx 0.236→0.240、ry 0.122→0.124 即可回到 0.005 以上。",
+    "[硬检查不通过] hatband_tight_fit: 藏青帽带 vs 白帽顶最小间隙 0.0006 米（0.005 构造线之下 0.0044 米）：帽带 ry 按帽顶 rx（0.26）取值，未计帽顶球心 y +0.01 的偏置——帽顶在 z 1.62 的 +y 表面在 y 0.2564，帽带底环 ry 0.253 已在其内；底环 5 个顶点落在理想帽顶椭球内（q 0.973–0.996，最深约 0.0034 米），网格间隙全靠帽顶 12×6 球面刻面向内收才保持正值 0.0006 米。build_031 的 L2 只核了 rx，未核 ry。下次把帽带 ry +0.006（底环 0.253→0.259、顶环 0.252→0.258）或把帽带中心 y +0.01。",
+    "lens_lift_construction: 墨镜片离泳装面最远点 0.0340 / 0.0338 米（通用上限 0.03）：镜片是 0.012 厚、绕 z 倾 0.08 rad 的硬盒，挂在曲率半径 0.14 米的椭圆泳装面上，远角离面大是构造使然——按理想椭圆解析值 0.0296 米，实测与解析差 0.0044 米（泳装 12 边形刻面矢高）；内侧面离泳装面 0.006 米（见第 4.3 节），不是漂浮。已按 033 杯盖先例改用构造判据（解析值 ±0.006），本项通过。"
+  ],
+  "overall_pass": false
+}
