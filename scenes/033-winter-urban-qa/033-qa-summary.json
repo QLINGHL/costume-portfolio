@@ -1,0 +1,730 @@
+{
+  "asset": "032-winter-urban",
+  "blend": "scenes/032-winter-urban/032-winter-urban.blend",
+  "parts": 58,
+  "families": {
+    "CreamSweater": 64,
+    "CreamTurtleneck": 10,
+    "CreamKnitRing": 48,
+    "NavyCoat": 75,
+    "NavyQuiltBand": 45,
+    "CreamCoatHem": 15,
+    "GoldCoatButton": 36,
+    "CreamSnowflakeH": 12,
+    "CreamSnowflakeV": 12,
+    "NavyPleat": 80,
+    "NavySleeve": 120,
+    "CreamCuff": 20,
+    "BrickScarfWrap": 12,
+    "BrickScarfTail": 6,
+    "BrickScarfFringe": 18,
+    "CreamBeanieDome": 72,
+    "CreamBeanieBrim": 24,
+    "BrickPomPom": 32,
+    "NavyCatEar": 10,
+    "HairStreak": 32,
+    "GoldEarring": 36,
+    "NavyTrousers": 24,
+    "CreamLegWarmer": 20,
+    "CaramelBoot": 20,
+    "CaramelBootSole": 12,
+    "CreamFurCuff": 20,
+    "CreamMitten": 24,
+    "CreamCoffeeCup": 36,
+    "CaramelCupLid": 36,
+    "BrickCupSleeve": 12
+  },
+  "total_faces": 983,
+  "total_verts": 1264,
+  "tris": 188,
+  "quads": 795,
+  "ngons": 0,
+  "ngons_expected": 0,
+  "ngons_ok": true,
+  "faces_expected": 983,
+  "faces_match": true,
+  "face_limit": 1500,
+  "faces_ok": true,
+  "duplicate_verts": 0,
+  "loose_edges": 0,
+  "nonmanifold_edges": 0,
+  "degenerate_faces": 0,
+  "boundary_edges_total": 596,
+  "boundary_edges_closed_solids": 0,
+  "inverted_normals": 0,
+  "inverted_normals_solids": 0,
+  "inverted_normals_flat_patches": 0,
+  "topo_ok": true,
+  "uv_parts_with_layer": 20,
+  "uv_parts": [
+    "BrickPomPom",
+    "BrickScarfFringe",
+    "BrickScarfFringe.001",
+    "BrickScarfFringe.002",
+    "BrickScarfTail",
+    "CreamBeanieDome",
+    "CreamMitten",
+    "CreamSnowflakeH",
+    "CreamSnowflakeH.001",
+    "CreamSnowflakeV",
+    "CreamSnowflakeV.001",
+    "GoldCoatButton",
+    "GoldCoatButton.001",
+    "GoldCoatButton.002",
+    "GoldCoatButton.003",
+    "GoldCoatButton.004",
+    "GoldCoatButton.005",
+    "GoldEarring",
+    "GoldEarring.001",
+    "HairStreak"
+  ],
+  "uv_out_of_bounds": 0,
+  "empty_material_slots": 0,
+  "mannequin_faces": 442,
+  "gaps": {
+    "sweater_vs_torso": {
+      "min": 0.0095,
+      "median": 0.0315,
+      "samples": 80,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "turtleneck_vs_neck": {
+      "min": 0.0305,
+      "median": 0.0832,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "coat_vs_sweater": {
+      "min": 0.0187,
+      "median": 0.0619,
+      "samples": 96,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "sleeveL_vs_arm": {
+      "min": 0.027,
+      "median": 0.0396,
+      "samples": 52,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "sleeveR_vs_arm": {
+      "min": 0.027,
+      "median": 0.0396,
+      "samples": 52,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "scarfWrap_vs_turtleneck": {
+      "min": 0.01,
+      "median": 0.0608,
+      "samples": 24,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "trousers_vs_legL": {
+      "min": 0.006,
+      "median": 0.0878,
+      "samples": 36,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "trousers_vs_legR": {
+      "min": 0.006,
+      "median": 0.0878,
+      "samples": 36,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "legwarmerL_vs_leg": {
+      "min": 0.015,
+      "median": 0.0271,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "legwarmerR_vs_leg": {
+      "min": 0.015,
+      "median": 0.0271,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "bootL_vs_legwarmer": {
+      "min": 0.008,
+      "median": 0.1203,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "bootR_vs_legwarmer": {
+      "min": 0.008,
+      "median": 0.1203,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "furCuffL_vs_boot": {
+      "min": 0.006,
+      "median": 0.0209,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "furCuffR_vs_boot": {
+      "min": 0.006,
+      "median": 0.0209,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "beanieDome_vs_hair": {
+      "min": 0.0094,
+      "median": 0.0366,
+      "samples": 40,
+      "minimum": 0.005,
+      "ok": true,
+      "buried": 22
+    },
+    "beanieBrim_vs_hair": {
+      "min": 0.0166,
+      "median": 0.0355,
+      "samples": 48,
+      "minimum": 0.005,
+      "ok": true
+    }
+  },
+  "gaps_ok": true,
+  "trousers_vs_legwarmer": {
+    "unsigned_min": 0.0018,
+    "unsigned_median": 0.228,
+    "samples": 36,
+    "contact_z": [
+      0.34
+    ]
+  },
+  "attachments": {
+    "cuffL_vs_sleeve": {
+      "min": 0.0034,
+      "median": 0.0117,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "cuffR_vs_sleeve": {
+      "min": 0.0034,
+      "median": 0.0117,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "knitRing_vs_sweater": {
+      "min": 0.006,
+      "median": 0.006,
+      "samples": 32,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "knitRing.001_vs_sweater": {
+      "min": 0.006,
+      "median": 0.006,
+      "samples": 32,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "knitRing.002_vs_sweater": {
+      "min": 0.006,
+      "median": 0.006,
+      "samples": 32,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "quiltBand_vs_coat": {
+      "min": 0.0059,
+      "median": 0.006,
+      "samples": 32,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "quiltBand.001_vs_coat": {
+      "min": 0.0059,
+      "median": 0.006,
+      "samples": 32,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "quiltBand.002_vs_coat": {
+      "min": 0.0059,
+      "median": 0.006,
+      "samples": 32,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "coatHem_vs_coat": {
+      "min": 0.0056,
+      "median": 0.0059,
+      "samples": 32,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "button_vs_coat": {
+      "min": 0.0024,
+      "median": 0.0132,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "scarfTail_vs_sweater": {
+      "min": 0.0014,
+      "median": 0.021,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "pompom_vs_beanie": {
+      "min": 0.0178,
+      "median": 0.0191,
+      "samples": 26,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "catEar_vs_beanie": {
+      "min": 0.0365,
+      "median": 0.0744,
+      "samples": 5,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "streak_vs_hair": {
+      "min": 0.002,
+      "median": 0.0324,
+      "samples": 26,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "earring_vs_head": {
+      "min": 0.0055,
+      "median": 0.0192,
+      "samples": 14,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "mitten_vs_hand": {
+      "min": 0.0006,
+      "median": 0.0211,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "bootSoleL_vs_foot": {
+      "min": 0.0086,
+      "median": 0.0086,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "bootSoleR_vs_foot": {
+      "min": 0.0086,
+      "median": 0.0086,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "cupLid_vs_cup": {
+      "min": 0.0,
+      "median": 0.03,
+      "samples": 26,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "cupSleeve_vs_cup": {
+      "min": 0.0049,
+      "median": 0.0062,
+      "samples": 24,
+      "minimum": 0.005,
+      "ok": false
+    }
+  },
+  "protrusions": {
+    "CreamKnitRing": {
+      "lift": 0.006,
+      "ok": true,
+      "host": "CreamSweater",
+      "lo": 0.004,
+      "hi": 0.08
+    },
+    "CreamKnitRing.001": {
+      "lift": 0.006,
+      "ok": true,
+      "host": "CreamSweater",
+      "lo": 0.004,
+      "hi": 0.08
+    },
+    "CreamKnitRing.002": {
+      "lift": 0.006,
+      "ok": true,
+      "host": "CreamSweater",
+      "lo": 0.004,
+      "hi": 0.08
+    },
+    "NavyQuiltBand": {
+      "lift": 0.006,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.004,
+      "hi": 0.08
+    },
+    "NavyQuiltBand.001": {
+      "lift": 0.006,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.004,
+      "hi": 0.08
+    },
+    "NavyQuiltBand.002": {
+      "lift": 0.006,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.004,
+      "hi": 0.08
+    },
+    "CreamCoatHem": {
+      "lift": 0.006,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.004,
+      "hi": 0.08
+    },
+    "GoldCoatButton": {
+      "lift": 0.0135,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.005,
+      "hi": 0.02
+    },
+    "GoldCoatButton.001": {
+      "lift": 0.0136,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.005,
+      "hi": 0.02
+    },
+    "GoldCoatButton.002": {
+      "lift": 0.0136,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.005,
+      "hi": 0.02
+    },
+    "GoldCoatButton.003": {
+      "lift": 0.0136,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.005,
+      "hi": 0.02
+    },
+    "GoldCoatButton.004": {
+      "lift": 0.0136,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.005,
+      "hi": 0.02
+    },
+    "GoldCoatButton.005": {
+      "lift": 0.0136,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.005,
+      "hi": 0.02
+    },
+    "CreamSnowflakeH": {
+      "lift": 0.0136,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.005,
+      "hi": 0.02
+    },
+    "CreamSnowflakeV": {
+      "lift": 0.0132,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.005,
+      "hi": 0.02
+    },
+    "CreamSnowflakeH.001": {
+      "lift": 0.0136,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.005,
+      "hi": 0.02
+    },
+    "CreamSnowflakeV.001": {
+      "lift": 0.0132,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.005,
+      "hi": 0.02
+    },
+    "NavyPleat": {
+      "lift": 0.0305,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.004,
+      "hi": 0.08
+    },
+    "NavyPleat.001": {
+      "lift": 0.0263,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.004,
+      "hi": 0.08
+    },
+    "NavyPleat.002": {
+      "lift": 0.0289,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.004,
+      "hi": 0.08
+    },
+    "NavyPleat.003": {
+      "lift": 0.0263,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.004,
+      "hi": 0.08
+    },
+    "NavyPleat.004": {
+      "lift": 0.0305,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.004,
+      "hi": 0.08
+    },
+    "NavyPleat.005": {
+      "lift": 0.0263,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.004,
+      "hi": 0.08
+    },
+    "NavyPleat.006": {
+      "lift": 0.0289,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.004,
+      "hi": 0.08
+    },
+    "NavyPleat.007": {
+      "lift": 0.0286,
+      "ok": true,
+      "host": "NavyCoat",
+      "lo": 0.004,
+      "hi": 0.08
+    },
+    "GoldEarring": {
+      "lift": 0.0303,
+      "ok": true,
+      "host": "Mannequin_Head",
+      "lo": 0.005,
+      "hi": 0.035
+    },
+    "GoldEarring.001": {
+      "lift": 0.0303,
+      "ok": true,
+      "host": "Mannequin_Head",
+      "lo": 0.005,
+      "hi": 0.035
+    },
+    "BrickScarfTail": {
+      "lift": 0.0259,
+      "ok": true,
+      "host": "CreamSweater",
+      "lo": 0.004,
+      "hi": 0.08
+    },
+    "CaramelCupLid": {
+      "lift": 0.002,
+      "ok": true,
+      "host": "CreamCoffeeCup (radial overhang)",
+      "lo": 0.001,
+      "hi": 0.01
+    },
+    "BrickCupSleeve": {
+      "lift": 0.0062,
+      "ok": true,
+      "host": "CreamCoffeeCup",
+      "lo": 0.003,
+      "hi": 0.02
+    }
+  },
+  "protrusions_ok": true,
+  "earring_ideal_relief": 0.0161,
+  "cup_through_palm": {
+    "cup_wall_sampled_min": 0.0003,
+    "cup_wall_samples": 888,
+    "wall_points_inside_hand": 84,
+    "hand_centre_to_cup_axis": 0.0003,
+    "cup_radius_at_hand_z": 0.055,
+    "cup_z": [
+      0.46,
+      0.64
+    ],
+    "hand_z": [
+      0.607,
+      0.743
+    ],
+    "z_overlap": [
+      0.607,
+      0.64
+    ],
+    "ok": true
+  },
+  "floating_bad": [],
+  "floating_ok": true,
+  "garment_bbox": {
+    "x": [
+      -0.504,
+      0.504
+    ],
+    "y": [
+      -0.25,
+      0.25
+    ],
+    "z": [
+      0.0,
+      1.84
+    ],
+    "height": 1.84,
+    "width": 1.007
+  },
+  "boot_min_z": 0.0,
+  "ground_ok": true,
+  "foot_min_z": 0.0,
+  "fail_items": [],
+  "top_z": 1.84,
+  "top_object": "NavyCatEar",
+  "frame_fraction": 0.641,
+  "frame_ok": true,
+  "materials": {
+    "rows": [
+      {
+        "name": "Navy",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.014,
+          0.023,
+          0.058
+        ],
+        "ok": true
+      },
+      {
+        "name": "Cream",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.914,
+          0.863,
+          0.791
+        ],
+        "ok": true
+      },
+      {
+        "name": "Caramel",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.434,
+          0.195,
+          0.042
+        ],
+        "ok": true
+      },
+      {
+        "name": "Brick",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.381,
+          0.042,
+          0.027
+        ],
+        "ok": true
+      },
+      {
+        "name": "Gold",
+        "found": true,
+        "metallic": 0.6,
+        "roughness": 0.35,
+        "base_color": [
+          0.657,
+          0.351,
+          0.009
+        ],
+        "ok": true
+      },
+      {
+        "name": "Hair_Black",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.7,
+        "base_color": [
+          0.011,
+          0.011,
+          0.015
+        ],
+        "ok": true
+      },
+      {
+        "name": "LightBlue",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.212,
+          0.479,
+          0.807
+        ],
+        "ok": true
+      },
+      {
+        "name": "Skin",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.7,
+        "base_color": [
+          0.694,
+          0.381,
+          0.209
+        ],
+        "ok": true
+      },
+      {
+        "name": "Eye_Dark",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.003,
+          0.003,
+          0.003
+        ],
+        "ok": true
+      }
+    ],
+    "all_ok": true
+  },
+  "warnings": [
+    "trousers_vs_legwarmer_overlap: 长裤底沿与腿套搭接——腿套顶端 z 0.36 伸进长裤底沿 z 0.34 之上 0.02 米，腿套在 ±y 方向比长裤椭圆管宽约 0.007 米，搭接带（长裤底沿 z 0.34 贴住腿套，无符号距离最小 0.0018 米）里腿套表面贴住长裤壁。视觉上读作腿套从裤脚下露出来，属设计搭接、未造成穿帮；下次若要完全藏进裤管，把腿套半径 0.110 改为 0.102 或把搭接带缩到 0.01 米。",
+    "cuff_tight_fit: 奶油袖口环 vs 长袖最小间隙 0.0034 米（0.005 构造线之下 0.0016 米）：袖口环 r 0.102，袖筒在袖口位置锥缩到 0.0986（L2 用袖筒末端半径 0.096 算，得到设计值 0.006，取样位置偏了）。正间隙、无相交、无视觉缺陷（032 v2 目视通过，袖口环在腕部清晰可见）；按 010 质检单同类处理（靴口束带间隙 0.003 米系束口紧箍构造，列观察项），本项列观察项而非硬失败。下次把袖口半径 0.102 改为 0.105 即可回到 0.005 以上。",
+    "beanie_brim_gap_below_design: 奶油帽檐 vs 发顶最小间隙 0.0166 米（设计 0.024）：发顶球心 y +0.02 偏置，帽檐在 +y 一侧离发面更近；仍高于 0.005 构造线，通过。下次把发顶球心 y 改回 0.0 或帽檐半径 +0.008。",
+    "earring_relief_faceting: 金耳钉离头面最远点 0.0303 米（设计浮雕 0.019）：人偶头是 10×8 粗球面，耳钉所贴的面片比理想椭球面内收约 0.011 米，网格实测值含该面片内收；按理想椭球面算浮雕为 0.0161 米，与设计值 0.019 一致。耳钉半嵌头面（最小距离 0.0055 米），读作金耳钉，无漂浮。"
+  ],
+  "overall_pass": true
+}
