@@ -8,8 +8,8 @@
 手套包覆、靴口搭接、靴底落地）/ 尺寸与构图。全部数值从 blend 文件实测填写，不编造。
 
 设计对照值来源：scenes/036-rinascita-sea-patrol/design.md 与 build_036.py
-（色值 linear RGB、面数 833、层间隙 >=0.005、锚徽浮雕 0.010、拉链齿 0.008、
-金扣 0.010、腰扣 0.010、膝垫 0.011、膝条 0.007、波纹环 0.006、褶裥外沿 0.026、
+（色值 linear RGB、面数 941、层间隙 >=0.005、锚徽浮雕 0.010、拉链齿 0.008、
+金扣 0.010、腰扣 0.010、膝垫 0.011（中心；038 v4 从 0.006 改回，垫减薄并外移）、膝条 0.007、波纹环 0.006、褶裥外沿 0.026、
 护目镜 0.008、耳钉 0.019、罗盘盘心离掌 0.007、水手帽檐 r 0.300、帽顶 r 0.25
 压扁 0.55、靴底落地 z=0.0、N-gon 设计值 0）。
 
@@ -73,7 +73,7 @@ FLAT_PATCHES = ("GoldCompass",)
 RIBBON_GEOMETRIC = ("PearlCapBrim",)
 
 EXPECTED_NGONS = 0          # design.md: N-gon 0
-EXPECTED_FACES = 833        # component build, recorded in design.md
+EXPECTED_FACES = 941        # component build, recorded in design.md (v5: knee shells)
 FACE_LIMIT = 1500
 MIN_GAP = 0.005
 
@@ -96,9 +96,9 @@ HAIR_R = (0.225, 0.21375, 0.18)
 # centre (0,0,1.50), radii (0.22, 0.198, 0.231).
 HEAD_C = (0.0, 0.0, 1.50)
 HEAD_R = (0.22, 0.198, 0.231)
-# Cap dome ellipsoid (build_036): centre (0, 0.01, 1.64),
+# Cap dome ellipsoid (build_036 v3/038): centre (0, 0.01, 1.65),
 # r 0.25 scaled (1.0, 0.95, 0.55).
-DOME_C = (0.0, 0.01, 1.64)
+DOME_C = (0.0, 0.01, 1.65)
 DOME_R = (0.25, 0.2375, 0.1375)
 # Trouser rings (build_036) for the boot-cuff hem-crossing check.
 TROUSER_RINGS = [(0.62, 0.246, 0.128), (0.48, 0.240, 0.126),
@@ -488,9 +488,10 @@ def main():
                                             obj("Mannequin_Foot"))
     gaps["bootSoleR_vs_foot"] = gap_between(obj("CharcoalBootSole.001"),
                                             obj("Mannequin_Foot.001"))
-    # Cap dome vs hair: design clearance ~0.031 at z 1.62. The dome is
-    # pulled over the head, so its lower rim is buried inside the hair
-    # ellipsoid by construction: measure only the visible part.
+    # Cap dome vs hair: design clearance ~0.028 at z 1.62 (dome centre
+    # z 1.65, v3/038). The dome is pulled over the head, so its lower
+    # rim is buried inside the hair ellipsoid by construction: measure
+    # only the visible part.
     def outside_hair(p):
         return not inside_ellipsoid(p, HAIR_C, HAIR_R)
     gaps["capDome_vs_hair"] = gap_between_visible(
@@ -569,7 +570,8 @@ def main():
 
     # ---- protruding features: farthest vertex above the host surface ----
     # Design reliefs: anchor bar 0.010, anchor ring ~0.015, zipper tooth
-    # 0.008, jacket button 0.010, belt buckle 0.010, knee pad 0.011,
+    # 0.008, jacket button 0.010, belt buckle 0.010, knee pad 0.011
+    # (centre; 038 v4 thinned the pad and moved it out), knee stripe
     # knee stripe 0.007, goggle lens 0.008 (centre; corners ride the dome
     # curvature — analytic criterion below), goggle bridge ~0.007,
     # earring 0.019, wave ring 0.006, pleat fin outer edge 0.026,
@@ -1059,27 +1061,32 @@ def main():
             abs(protrusions["CyanGoggleLens"]["lift"]
                 - protrusions["CyanGoggleLens"]["analytic"]),
             attach["goggleLens_vs_dome"]["min"]))
-    warnings.append(
-        "knee_pad_corners_float: 深青膝垫单宿主原值 vs 长裤最远点 %.4f 米"
-        "（通用上限 0.03）：膝垫高 0.14 米、中心 z 0.38，下沿 0.03 米伸到长裤"
-        "下摆（z 0.34）之下、搭在靴筒上，单宿主量法把下沿角点算到已结束的"
-        "裤面上；按最近宿主（长裤/靴筒取近）算凸起仍为 %.4f 米——膝垫是"
-        " 0.12 米宽的平板，贴在曲率半径约 0.126 米的裤腿上，上沿外角离裤面"
-        " 0.039 米，垫角翘起；垫背嵌进裤/靴（不是漂浮），但角部离面超标。"
-        "修复法：膝垫收窄到 0.08–0.09 米、中心 y 从 -0.10 退到 -0.095（贴紧"
-        "裤面），或把膝垫改成两片微曲面。" % (
-            protrusions["TealKneePad"]["raw_lift"],
-            protrusions["TealKneePad"]["lift"]))
-    warnings.append(
-        "streak_buried_in_head: 荧光青挑染单宿主原值 vs 发顶最远点 %.4f 米"
-        "（上限 0.045）：挑染扁椭球中心 (-0.11, -0.115, 1.44)，26 个顶点"
-        "全部在人偶头球面之内——挑染整个埋在头里，从任何角度都看不见（036"
-        "效果图里帽檐下没有荧光青挑染，设计说明“帽檐下露一缕”未实现；036"
-        "轮次目视把护目镜/衣领误认成挑染）。原因：挑染 z 1.44 低于该处发顶"
-        "下沿（z 1.462），落在脸上而不是发上，且 y -0.115 在头面（y -0.163）"
-        "之后。修复法：把挑染移到发面外侧（如中心 (-0.12, -0.16, 1.47)，"
-        "贴发面平放），或抬到 z 1.50 以上发顶覆盖处。" % (
-            protrusions["HairStreak"]["raw_lift"],))
+    # (038: failure-only since the v3 repair — the 0.12-wide pad and the
+    # buried streak are the pre-repair state, not the current baseline.)
+    if not protrusions["TealKneePad"]["ok"] or not protrusions["TealKneePad.001"]["ok"]:
+        warnings.append(
+            "knee_pad_corners_float: 深青膝垫单宿主原值 vs 长裤最远点 %.4f 米"
+            "（通用上限 0.03）：膝垫高 0.14 米、中心 z 0.38，下沿 0.03 米伸到长裤"
+            "下摆（z 0.34）之下、搭在靴筒上，单宿主量法把下沿角点算到已结束的"
+            "裤面上；按最近宿主（长裤/靴筒取近）算凸起仍为 %.4f 米——膝垫是"
+            "贴腿曲面壳（前 0.011、背 -0.004 嵌进裤面），垫角翘起；垫背嵌进裤/"
+            "靴（不是漂浮），但角部离面超标。修复法：把曲面壳的前凸改到 0.008，"
+            "或把壳的采样角收进贴片面片顶点（避开裤面 12 段刻面中点）。" % (
+                protrusions["TealKneePad"]["raw_lift"],
+                protrusions["TealKneePad"]["lift"]))
+    # (038: failure-only since the v3 repair — the buried streak is the
+    # pre-repair state, not the current baseline.)
+    if not protrusions["HairStreak"]["ok"]:
+        warnings.append(
+            "streak_buried_in_head: 荧光青挑染单宿主原值 vs 发顶最远点 %.4f 米"
+            "（上限 0.045）：挑染扁椭球中心 (-0.12, -0.16, 1.47)，可见顶点"
+            " %d / %d 个——挑染埋在人偶头球内、从任何角度都看不见（036 效果图"
+            "里帽檐下没有荧光青挑染，设计说明“帽檐下露一缕”未实现）。修复法："
+            "把挑染移到发面外侧（如中心 (-0.12, -0.16, 1.47)，贴发面平放），"
+            "或抬到 z 1.50 以上发顶覆盖处。" % (
+                protrusions["HairStreak"]["raw_lift"],
+                protrusions["HairStreak"]["visible_verts"],
+                protrusions["HairStreak"]["total_verts"]))
     warnings.append(
         "brim_normal_recalc_false_positive: 白帽檐 15 个面被 Blender "
         "recalc_face_normals 全数判为倒置：recalc 对近水平开口带片的朝外判定"
@@ -1113,10 +1120,10 @@ def main():
         warnings.append(
             "[硬检查不通过] capDome_grazing: 珍珠白帽顶 vs 发顶可见部分最小间隙"
             " %.4f 米（0.005 构造线之下 %.4f 米，中位 %.4f 米）：帽顶球（r 0.25，"
-            "压扁 0.55）下沿按构造埋进发顶椭球，球面与发顶面以浅角度相交，交线"
-            "附近的可见顶点离发顶面只有 %.4f 米；正间隙、无相交、无视觉缺陷"
-            "（036 目视通过，帽顶亮白完整）。修复法：帽顶球半径 0.25→0.26（交线"
-            "下移、夹角变陡），或把帽顶球心 z 1.64→1.65。" % (
+            "压扁 0.55，球心 z 1.65——038 已从 1.64 抬起）下沿按构造埋进发顶椭球，"
+            "球面与发顶面以浅角度相交，交线附近的可见顶点离发顶面只有 %.4f 米；"
+            "正间隙、无相交、无视觉缺陷（036 目视通过，帽顶亮白完整）。修复法："
+            "再把帽顶球心 z 1.65→1.66，或把帽顶球半径 0.25→0.26。" % (
                 gaps["capDome_vs_hair"]["min"],
                 0.005 - gaps["capDome_vs_hair"]["min"],
                 gaps["capDome_vs_hair"]["median"],
@@ -1124,49 +1131,46 @@ def main():
     if not gaps["belt_vs_bodysuit"]["ok"]:
         warnings.append(
             "[硬检查不通过] belt_tight_fit: 炭黑战术腰带 vs 炭黑潜水服最小间隙"
-            " %.4f 米（0.005 构造线之下 %.4f 米）：build_036 的 L2 只核了 rx"
-            "（腰带 0.262 vs 潜水服 0.2559，差 0.0061），漏了 ry——腰带 ry"
-            " 0.140 vs 潜水服在 z 0.84 的 ry 0.1368，前后方向只差 0.0032 米；"
-            "正间隙、无相交、无视觉缺陷。修复法：腰带环 ry +0.004（0.140→"
-            "0.144、0.139→0.143），或把腰带环整体放大 rx/ry +0.004。" % (
+            " %.4f 米（0.005 构造线之下 %.4f 米）：腰带环 ry 已是 0.144/0.143"
+            "（038 从 0.140/0.139 +0.004），L2 已补 ry 检查；正间隙、无相交、"
+            "无视觉缺陷。修复法：腰带环 ry 再 +0.002，或把腰带环整体放大"
+            " rx/ry +0.002。" % (
                 gaps["belt_vs_bodysuit"]["min"],
                 0.005 - gaps["belt_vs_bodysuit"]["min"]))
     if not gaps["ropeCoil_vs_bodysuit"]["ok"]:
         warnings.append(
             "[硬检查不通过] rope_tight_fit: 荧光青绳圈 vs 炭黑潜水服最小间隙"
-            " %.4f 米（0.005 构造线之下 %.4f 米）：同款 rx-only 漏检——绳圈"
-            " rx 0.258 vs 潜水服 0.2513（差 0.0067）看着够，但绳圈 ry 0.136"
-            " vs 潜水服在 z 0.74 的 ry 0.1347，前后方向只差 0.0013 米；正间隙、"
-            "无相交、无视觉缺陷。修复法：绳圈环 ry +0.004（0.136→0.140、"
-            "0.135→0.139）。" % (
+            " %.4f 米（0.005 构造线之下 %.4f 米）：同款 rx-only 漏检——绳圈环"
+            " ry 已是 0.140/0.139（038 从 0.136/0.135 +0.004），L2 已补 ry 检查；"
+            "正间隙、无相交、无视觉缺陷。修复法：绳圈环 ry 再 +0.002。" % (
                 gaps["ropeCoil_vs_bodysuit"]["min"],
                 0.005 - gaps["ropeCoil_vs_bodysuit"]["min"]))
     if not gaps["cuffL_vs_sleeve"]["ok"] or not gaps["cuffR_vs_sleeve"]["ok"]:
         warnings.append(
             "[硬检查不通过] cuff_tight_fit: 珍珠白袖口 vs 深青长袖最小间隙"
-            "左 %.4f / 右 %.4f 米（0.005 构造线之下）：build_036 的 L2 用袖筒"
-            "末端半径 0.096 核（袖口 0.102 - 0.096 = 0.006），但袖口顶环落在"
-            "袖筒 s 0.60 处，那里袖筒半径是 0.0986、不是末端 0.096，实际间隙"
-            "只有 0.0034 米；正间隙、无相交、无视觉缺陷。修复法：袖口环半径"
-            " 0.102→0.105（间隙 0.0064），或把袖口沿臂轴下移 0.02 米到袖筒"
-            "末端段。" % (gaps["cuffL_vs_sleeve"]["min"],
+            "左 %.4f / 右 %.4f 米（0.005 构造线之下）：袖口环已是 r 0.105"
+            "（038 从 0.102 放大），L2 已补袖筒中段半径检查（袖口顶环落在"
+            "袖筒 s 0.60 处，那里袖筒半径是 0.0986、不是末端 0.096）；正间隙、"
+            "无相交、无视觉缺陷。修复法：把袖口沿臂轴下移 0.02 米到袖筒末端"
+            "段，或把袖口环再放大到 0.108。" % (gaps["cuffL_vs_sleeve"]["min"],
                          gaps["cuffR_vs_sleeve"]["min"]))
     if not protrusions["TealKneePad"]["ok"] or not protrusions["TealKneePad.001"]["ok"]:
         warnings.append(
             "[硬检查不通过] knee_pad_corners: 深青膝垫凸起（按最近宿主）左"
-            " %.4f / 右 %.4f 米（上限 0.03）：0.12 米宽的平板贴在曲率半径约"
-            " 0.126 米的裤腿上，上沿外角离裤面 0.039 米，垫角翘起；垫背嵌进"
-            "裤/靴，不是漂浮。修复法：膝垫收窄到 0.08–0.09 米、中心 y 从"
-            " -0.10 退到 -0.095，或改成两片微曲面。" % (
+            " %.4f / 右 %.4f 米（上限 0.03）：膝垫已改成贴腿曲面壳（前 0.011、"
+            "背 -0.004，下沿一行跟靴筒圆面，038 v5），仍贴在曲率半径约 0.126"
+            " 米的裤腿上，垫角翘起；垫背嵌进裤/靴，不是漂浮。修复法：把曲面"
+            "壳的前凸改到 0.008，或把壳的采样角收进裤面 12 段刻面顶点。" % (
                 protrusions["TealKneePad"]["lift"],
                 protrusions["TealKneePad.001"]["lift"]))
     if not protrusions["HairStreak"]["ok"]:
         warnings.append(
             "[硬检查不通过] streak_invisible: 荧光青挑染可见顶点 %d / %d 个"
-            "（要求 > 0）：挑染整个埋在人偶头球内，从任何角度都看不见；单宿主"
-            "原值 %.4f 米是埋住的下端尖角离发顶面的距离，不是凸起。修复法："
-            "把挑染移到发面外侧（如中心 (-0.12, -0.16, 1.47)），或抬到 z 1.50"
-            " 以上发顶覆盖处。" % (
+            "（要求 > 0）：挑染已移到发面外侧中心 (-0.12, -0.16, 1.47)"
+            "（038 从 (-0.11, -0.115, 1.44) 移出），仍埋在人偶头球内，从任何"
+            "角度都看不见；单宿主原值 %.4f 米是埋住的下端尖角离发顶面的距离，"
+            "不是凸起。修复法：把挑染再往外推 0.01 米，或抬到 z 1.50 以上发顶"
+            "覆盖处。" % (
                 protrusions["HairStreak"]["visible_verts"],
                 protrusions["HairStreak"]["total_verts"],
                 protrusions["HairStreak"]["raw_lift"]))
@@ -1525,7 +1529,7 @@ def main():
                         "GoldJacketButton.002", "GoldJacketButton.003"])
         write_protrude(f, "金腰扣（设计浮雕 0.010，要求 0.005–0.03）",
                        ["GoldBeltBuckle"])
-        write_protrude(f, "深青膝垫 ×2（设计浮雕 0.011，要求 0.005–0.03；"
+        write_protrude(f, "深青膝垫 ×2（设计浮雕 0.011（中心；038 v4 从 0.006 改回），要求 0.005–0.03；"
                        "按最近宿主：长裤/靴筒，见注）",
                        ["TealKneePad", "TealKneePad.001"])
         write_protrude(f, "荧光青膝条 ×2（设计浮雕 0.007，要求 0.005–0.03）",
@@ -1688,7 +1692,7 @@ def main():
                 "本单第 4.1 节为从已建网格实测的逐点最近距离，两者口径不同，"
                 "以本单实测为准。\n")
         f.write("- 凸起件：design.md 的浮雕值（锚徽 0.010、拉链齿 0.008、"
-                "金扣 0.010、腰扣 0.010、膝垫 0.011、膝条 0.007、波纹环 0.006、"
+                "金扣 0.010、腰扣 0.010、膝垫 0.011（中心；038 v4 从 0.006 改回）、膝条 0.007、波纹环 0.006、"
                 "褶裥外沿 0.026、护目镜 0.008、耳钉 0.019、罗盘指针 0.009）是"
                 "贴片中心离宿主曲面的设计值；本单第 4.4 节是贴片全部顶点离已建"
                 "网格的最远点，边角离曲面更远，实测高于设计值属几何使然，以本单"

@@ -19,8 +19,8 @@
     "GoldBeltBuckle": 6,
     "CyanRopeCoil": 16,
     "PearlTrousers": 24,
-    "TealKneePad": 12,
-    "CyanKneeStripe": 12,
+    "TealKneePad": 76,
+    "CyanKneeStripe": 56,
     "CharcoalBoot": 20,
     "CharcoalBootSole": 12,
     "TealBootCuff": 20,
@@ -35,14 +35,14 @@
     "GoldCompass": 16,
     "CyanCompassNeedle": 6
   },
-  "total_faces": 833,
-  "total_verts": 1091,
+  "total_faces": 941,
+  "total_verts": 1199,
   "tris": 144,
-  "quads": 689,
+  "quads": 797,
   "ngons": 0,
   "ngons_expected": 0,
   "ngons_ok": true,
-  "faces_expected": 833,
+  "faces_expected": 941,
   "faces_match": true,
   "face_limit": 1500,
   "faces_ok": true,
@@ -64,15 +64,13 @@
     "ok": true
   },
   "topo_ok": true,
-  "uv_parts_with_layer": 25,
+  "uv_parts_with_layer": 21,
   "uv_parts": [
     "CharcoalGlove",
     "CharcoalGoggleBridge",
     "CyanCompassNeedle",
     "CyanGoggleLens",
     "CyanGoggleLens.001",
-    "CyanKneeStripe",
-    "CyanKneeStripe.001",
     "CyanZipperTooth",
     "CyanZipperTooth.001",
     "CyanZipperTooth.002",
@@ -88,9 +86,7 @@
     "GoldJacketButton.002",
     "GoldJacketButton.003",
     "HairStreak",
-    "PearlCapDome",
-    "TealKneePad",
-    "TealKneePad.001"
+    "PearlCapDome"
   ],
   "uv_out_of_bounds": 0,
   "empty_material_slots": 0,
@@ -160,32 +156,32 @@
       "ok": true
     },
     "cuffL_vs_sleeve": {
-      "min": 0.0034,
-      "median": 0.0117,
+      "min": 0.0064,
+      "median": 0.0135,
       "samples": 20,
       "minimum": 0.005,
-      "ok": false
+      "ok": true
     },
     "cuffR_vs_sleeve": {
-      "min": 0.0034,
-      "median": 0.0117,
+      "min": 0.0064,
+      "median": 0.0135,
       "samples": 20,
       "minimum": 0.005,
-      "ok": false
+      "ok": true
     },
     "belt_vs_bodysuit": {
-      "min": 0.0032,
-      "median": 0.0049,
+      "min": 0.0061,
+      "median": 0.0071,
       "samples": 32,
       "minimum": 0.005,
-      "ok": false
+      "ok": true
     },
     "ropeCoil_vs_bodysuit": {
-      "min": 0.0012,
-      "median": 0.0037,
+      "min": 0.0052,
+      "median": 0.0059,
       "samples": 32,
       "minimum": 0.005,
-      "ok": false
+      "ok": true
     },
     "trousers_vs_legL": {
       "min": 0.006,
@@ -244,23 +240,23 @@
       "ok": true
     },
     "capDome_vs_hair": {
-      "min": 0.0022,
-      "median": 0.047,
+      "min": 0.0053,
+      "median": 0.0505,
       "samples": 40,
       "minimum": 0.005,
-      "ok": false,
+      "ok": true,
       "buried": 22
     },
     "capBand_vs_dome": {
-      "min": 0.0178,
-      "median": 0.0365,
+      "min": 0.0221,
+      "median": 0.0409,
       "samples": 48,
       "minimum": 0.005,
       "ok": true
     },
     "capBrim_vs_dome": {
-      "min": 0.0811,
-      "median": 0.0898,
+      "min": 0.0853,
+      "median": 0.0939,
       "samples": 32,
       "minimum": 0.005,
       "ok": true
@@ -273,7 +269,7 @@
       "ok": true
     }
   },
-  "gaps_ok": false,
+  "gaps_ok": true,
   "brim_vs_eyes": {
     "brim_bottom_z": 1.585,
     "brim_top_z": 1.59,
@@ -366,60 +362,60 @@
       "ok": false
     },
     "buckle_vs_belt": {
-      "min": 0.0003,
+      "min": 0.0004,
       "median": 0.0123,
       "samples": 8,
       "minimum": 0.005,
       "ok": false
     },
     "kneePad_vs_trousers": {
-      "min": 0.0007,
-      "median": 0.0336,
-      "samples": 8,
+      "min": 0.0005,
+      "median": 0.0134,
+      "samples": 40,
       "minimum": 0.005,
       "ok": false
     },
     "kneeStripe_vs_pad": {
       "min": 0.0,
       "median": 0.007,
-      "samples": 8,
+      "samples": 30,
       "minimum": 0.005,
       "ok": false
     },
     "kneePad.001_vs_trousers": {
-      "min": 0.0007,
-      "median": 0.0336,
-      "samples": 8,
+      "min": 0.0006,
+      "median": 0.0133,
+      "samples": 40,
       "minimum": 0.005,
       "ok": false
     },
     "kneeStripe.001_vs_pad": {
       "min": 0.0,
       "median": 0.007,
-      "samples": 8,
+      "samples": 30,
       "minimum": 0.005,
       "ok": false
     },
     "goggleLens_vs_dome": {
-      "min": 0.0043,
-      "median": 0.0297,
+      "min": 0.0003,
+      "median": 0.0256,
       "samples": 8,
       "minimum": 0.005,
       "ok": false
     },
     "goggleLens.001_vs_dome": {
-      "min": 0.0043,
-      "median": 0.0297,
+      "min": 0.0003,
+      "median": 0.0256,
       "samples": 8,
       "minimum": 0.005,
       "ok": false
     },
     "goggleBridge_vs_dome": {
-      "min": 0.0051,
+      "min": 0.003,
       "median": 0.0108,
       "samples": 8,
       "minimum": 0.005,
-      "ok": true
+      "ok": false
     },
     "earring_vs_head": {
       "min": 0.0055,
@@ -436,11 +432,11 @@
       "ok": true
     },
     "streak_vs_hair": {
-      "min": 0.002,
-      "median": 0.0261,
+      "min": 0.0073,
+      "median": 0.0412,
       "samples": 26,
       "minimum": 0.005,
-      "ok": false
+      "ok": true
     },
     "needle_vs_compass": {
       "min": 0.001,
@@ -613,16 +609,16 @@
       "hi": 0.03
     },
     "GoldBeltBuckle": {
-      "lift": 0.0129,
+      "lift": 0.013,
       "ok": true,
       "host": "CharcoalBelt",
       "lo": 0.005,
       "hi": 0.03
     },
     "TealKneePad": {
-      "lift": 0.0386,
-      "raw_lift": 0.0513,
-      "ok": false,
+      "lift": 0.0167,
+      "raw_lift": 0.0497,
+      "ok": true,
       "host": "PearlTrousers/CharcoalBoot (nearest)",
       "lo": 0.005,
       "hi": 0.03
@@ -635,9 +631,9 @@
       "hi": 0.03
     },
     "TealKneePad.001": {
-      "lift": 0.0385,
-      "raw_lift": 0.0513,
-      "ok": false,
+      "lift": 0.0167,
+      "raw_lift": 0.0497,
+      "ok": true,
       "host": "PearlTrousers/CharcoalBoot (nearest)",
       "lo": 0.005,
       "hi": 0.03
@@ -650,23 +646,23 @@
       "hi": 0.03
     },
     "CyanGoggleLens": {
-      "lift": 0.0488,
-      "analytic": 0.0381,
+      "lift": 0.0447,
+      "analytic": 0.0347,
       "ok": true,
       "host": "PearlCapDome (ideal ellipsoid)",
-      "lo": 0.0321,
-      "hi": 0.0441
+      "lo": 0.0287,
+      "hi": 0.0407
     },
     "CyanGoggleLens.001": {
-      "lift": 0.0488,
-      "analytic": 0.0381,
+      "lift": 0.0447,
+      "analytic": 0.0347,
       "ok": true,
       "host": "PearlCapDome (ideal ellipsoid)",
-      "lo": 0.0321,
-      "hi": 0.0441
+      "lo": 0.0287,
+      "hi": 0.0407
     },
     "CharcoalGoggleBridge": {
-      "lift": 0.023,
+      "lift": 0.019,
       "ok": true,
       "host": "PearlCapDome",
       "lo": 0.005,
@@ -687,11 +683,11 @@
       "hi": 0.035
     },
     "HairStreak": {
-      "lift": 0.0,
-      "raw_lift": 0.0606,
-      "visible_verts": 0,
+      "lift": 0.0236,
+      "raw_lift": 0.0652,
+      "visible_verts": 17,
       "total_verts": 26,
-      "ok": false,
+      "ok": true,
       "host": "Mannequin_Hair/Mannequin_Head (visible part only)",
       "lo": 0.005,
       "hi": 0.045
@@ -781,7 +777,7 @@
       "hi": 0.02
     }
   },
-  "protrusions_ok": false,
+  "protrusions_ok": true,
   "earring_ideal_relief": 0.0161,
   "glove": {
     "hand_verts_total": 20,
@@ -857,8 +853,8 @@
   "floating_ok": true,
   "garment_bbox": {
     "x": [
-      -0.504,
-      0.504
+      -0.507,
+      0.507
     ],
     "y": [
       -0.3,
@@ -866,21 +862,18 @@
     ],
     "z": [
       0.0,
-      1.778
+      1.788
     ],
-    "height": 1.778,
-    "width": 1.007
+    "height": 1.788,
+    "width": 1.013
   },
   "sole_min_z": 0.0,
   "ground_ok": true,
   "foot_min_z": 0.0,
-  "fail_items": [
-    "层间隙（见第 4.1 节不通过项）",
-    "凸起件（见第 4.4 节不通过项）"
-  ],
-  "top_z": 1.778,
+  "fail_items": [],
+  "top_z": 1.788,
   "top_object": "PearlCapDome",
-  "frame_fraction": 0.617,
+  "frame_fraction": 0.621,
   "frame_ok": true,
   "materials": {
     "rows": [
@@ -987,18 +980,10 @@
     "brim_band_marginal: 白帽檐离深青帽带最近 0.0437 米（连接阈值 0.05，余量仅 0.0063 米）：帽檐是 r 0.30 的弧面片，唯一的连接是帽带环（帽檐离帽顶球面 0.089 米，不相接）；下次把帽檐内沿收进 0.29 或把帽带环放大到 r 0.26，留出连接余量。",
     "compass_tucked_under_cuff: 金罗盘盘面参数化采样（792 点）中有 246 点落在袖口筒内、0 点落在长袖筒内（盘顶一段藏进袖口/袖筒，盘面可见部分 68.9%，z 0.600–0.683 米）：盘顶读作从袖口下托出，正面仍可见大半个罗盘；下次若要整盘外露，把盘心沿臂轴下移 0.03 米或把盘半径缩到 0.045 米。",
     "earring_relief_faceting: 金耳钉离头面最远点 0.0303 米（设计浮雕 0.019）：人偶头是 10×8 粗球面，耳钉所贴的面片比理想椭球面内收约 0.011 米，网格实测值含该面片内收；按理想椭球面算浮雕为 0.0161 米，与设计值 0.019 一致。耳钉半嵌头面（最小距离 0.0055 米），读作金耳钉，无漂浮。",
-    "goggle_lens_corner: 护目镜片离帽顶球面最远点 0.0488 / 0.0488 米（通用上限 0.03）：镜片是 0.02 厚、0.085 宽的平盒，贴在曲率半径约 0.24 米的帽顶球面上，镜角离面大是构造使然——按理想椭球解析值 0.0381 米，实测与解析差 0.0107 米；帽顶是 12×6 粗球面，横向刻面矢高 0.0085 米、纬向 0.0063 米，合计约 0.0106 米，实测差值就是刻面矢高本身（与 034墨镜片允差 0.006 对 0.0044 矢高同比例，允差取 ±0.012）；镜片背面埋进帽顶（最小距离 0.0043 米），不是漂浮。已按 034 墨镜片先例改用构造判据（解析值 ±0.012），本项通过。",
-    "knee_pad_corners_float: 深青膝垫单宿主原值 vs 长裤最远点 0.0513 米（通用上限 0.03）：膝垫高 0.14 米、中心 z 0.38，下沿 0.03 米伸到长裤下摆（z 0.34）之下、搭在靴筒上，单宿主量法把下沿角点算到已结束的裤面上；按最近宿主（长裤/靴筒取近）算凸起仍为 0.0386 米——膝垫是 0.12 米宽的平板，贴在曲率半径约 0.126 米的裤腿上，上沿外角离裤面 0.039 米，垫角翘起；垫背嵌进裤/靴（不是漂浮），但角部离面超标。修复法：膝垫收窄到 0.08–0.09 米、中心 y 从 -0.10 退到 -0.095（贴紧裤面），或把膝垫改成两片微曲面。",
-    "streak_buried_in_head: 荧光青挑染单宿主原值 vs 发顶最远点 0.0606 米（上限 0.045）：挑染扁椭球中心 (-0.11, -0.115, 1.44)，26 个顶点全部在人偶头球面之内——挑染整个埋在头里，从任何角度都看不见（036效果图里帽檐下没有荧光青挑染，设计说明“帽檐下露一缕”未实现；036轮次目视把护目镜/衣领误认成挑染）。原因：挑染 z 1.44 低于该处发顶下沿（z 1.462），落在脸上而不是发上，且 y -0.115 在头面（y -0.163）之后。修复法：把挑染移到发面外侧（如中心 (-0.12, -0.16, 1.47)，贴发面平放），或抬到 z 1.50 以上发顶覆盖处。",
+    "goggle_lens_corner: 护目镜片离帽顶球面最远点 0.0447 / 0.0447 米（通用上限 0.03）：镜片是 0.02 厚、0.085 宽的平盒，贴在曲率半径约 0.24 米的帽顶球面上，镜角离面大是构造使然——按理想椭球解析值 0.0347 米，实测与解析差 0.0100 米；帽顶是 12×6 粗球面，横向刻面矢高 0.0085 米、纬向 0.0063 米，合计约 0.0106 米，实测差值就是刻面矢高本身（与 034墨镜片允差 0.006 对 0.0044 矢高同比例，允差取 ±0.012）；镜片背面埋进帽顶（最小距离 0.0003 米），不是漂浮。已按 034 墨镜片先例改用构造判据（解析值 ±0.012），本项通过。",
     "brim_normal_recalc_false_positive: 白帽檐 15 个面被 Blender recalc_face_normals 全数判为倒置：recalc 对近水平开口带片的朝外判定不可靠（它把檐面法向翻成朝上朝内）。按圆台几何直接验证：檐面是上宽下窄的圆台（r 0.300→0.295，dr/dz = +1.0），真外法向为 (cosθ, sinθ, -1)/√2（朝外朝下，与防风外套近垂直壁面 z ≈ -0.006 同约定）；内置法向与该外法向的点积最小 1.0000（要求 > 0.99），绕序正确。已改用几何判据，不计入实体倒置；036 效果图里帽檐读作亮白细檐，无发暗。",
     "cuff_over_trouser_hem: 深青靴口环（r 0.124，z 0.36–0.32）骑在珍珠白长裤下摆（z 0.34）上：环面与裤面按构造相交（环顶点离裤面最小 0.0156 / 0.0156 米），左/右环在 z 0.35 处各有 45 / 45 个采样点落在裤椭圆之外：环读作套在裤摆外面，搭接处无皮肤露出（裤摆带 z 0.32–0.36 的腿顶点0 个在环/裤之外），属靴口搭接构造、不是穿帮；033 对 032 的腿套搭接同款处理。",
-    "sleeve_through_jacket_shoulder: 深青长袖从防风外套肩部穿出（032 的做法：袖筒起点沿臂轴上抬 0.12）：袖面与外套面在肩部相交（袖顶点离外套面最小 0.004 / 0.004 米），属缝合构造、不是穿帮；袖筒 caps=True，筒口不透手臂顶盖。",
-    "[硬检查不通过] capDome_grazing: 珍珠白帽顶 vs 发顶可见部分最小间隙 0.0022 米（0.005 构造线之下 0.0028 米，中位 0.0470 米）：帽顶球（r 0.25，压扁 0.55）下沿按构造埋进发顶椭球，球面与发顶面以浅角度相交，交线附近的可见顶点离发顶面只有 0.0022 米；正间隙、无相交、无视觉缺陷（036 目视通过，帽顶亮白完整）。修复法：帽顶球半径 0.25→0.26（交线下移、夹角变陡），或把帽顶球心 z 1.64→1.65。",
-    "[硬检查不通过] belt_tight_fit: 炭黑战术腰带 vs 炭黑潜水服最小间隙 0.0032 米（0.005 构造线之下 0.0018 米）：build_036 的 L2 只核了 rx（腰带 0.262 vs 潜水服 0.2559，差 0.0061），漏了 ry——腰带 ry 0.140 vs 潜水服在 z 0.84 的 ry 0.1368，前后方向只差 0.0032 米；正间隙、无相交、无视觉缺陷。修复法：腰带环 ry +0.004（0.140→0.144、0.139→0.143），或把腰带环整体放大 rx/ry +0.004。",
-    "[硬检查不通过] rope_tight_fit: 荧光青绳圈 vs 炭黑潜水服最小间隙 0.0012 米（0.005 构造线之下 0.0038 米）：同款 rx-only 漏检——绳圈 rx 0.258 vs 潜水服 0.2513（差 0.0067）看着够，但绳圈 ry 0.136 vs 潜水服在 z 0.74 的 ry 0.1347，前后方向只差 0.0013 米；正间隙、无相交、无视觉缺陷。修复法：绳圈环 ry +0.004（0.136→0.140、0.135→0.139）。",
-    "[硬检查不通过] cuff_tight_fit: 珍珠白袖口 vs 深青长袖最小间隙左 0.0034 / 右 0.0034 米（0.005 构造线之下）：build_036 的 L2 用袖筒末端半径 0.096 核（袖口 0.102 - 0.096 = 0.006），但袖口顶环落在袖筒 s 0.60 处，那里袖筒半径是 0.0986、不是末端 0.096，实际间隙只有 0.0034 米；正间隙、无相交、无视觉缺陷。修复法：袖口环半径 0.102→0.105（间隙 0.0064），或把袖口沿臂轴下移 0.02 米到袖筒末端段。",
-    "[硬检查不通过] knee_pad_corners: 深青膝垫凸起（按最近宿主）左 0.0386 / 右 0.0385 米（上限 0.03）：0.12 米宽的平板贴在曲率半径约 0.126 米的裤腿上，上沿外角离裤面 0.039 米，垫角翘起；垫背嵌进裤/靴，不是漂浮。修复法：膝垫收窄到 0.08–0.09 米、中心 y 从 -0.10 退到 -0.095，或改成两片微曲面。",
-    "[硬检查不通过] streak_invisible: 荧光青挑染可见顶点 0 / 26 个（要求 > 0）：挑染整个埋在人偶头球内，从任何角度都看不见；单宿主原值 0.0606 米是埋住的下端尖角离发顶面的距离，不是凸起。修复法：把挑染移到发面外侧（如中心 (-0.12, -0.16, 1.47)），或抬到 z 1.50 以上发顶覆盖处。"
+    "sleeve_through_jacket_shoulder: 深青长袖从防风外套肩部穿出（032 的做法：袖筒起点沿臂轴上抬 0.12）：袖面与外套面在肩部相交（袖顶点离外套面最小 0.004 / 0.004 米），属缝合构造、不是穿帮；袖筒 caps=True，筒口不透手臂顶盖。"
   ],
-  "overall_pass": false
+  "overall_pass": true
 }

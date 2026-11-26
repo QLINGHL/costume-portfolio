@@ -11,6 +11,20 @@ L1 小组件 -> L2 中组件 -> L3 大组件（整套穿到人体底座上试穿
 + 白帽檐 + 荧光青护目镜）+ 荧光青挑染 + 金耳钉 + 炭黑手套（左手）
 + 金罗盘（右手竖立掌前）。外套改短款裁到腰——032 长款大衣的
 廓形变量。v2：鞋底加厚盖住脚掌、水手领改外张肩披、罗盘改竖立掌前。
+v3 (038, 2026-11-26)：按 037 质检单六处 FAIL 修复——袖口环
+0.102→0.105、腰带环 ry +0.004、绳圈环 ry +0.004、帽顶球心
+z 1.64→1.65、膝垫收窄 0.12→0.085 并 y -0.10→-0.095、挑染移到
+(-0.12, -0.16, 1.47)；L2 补 ry 检查（034 帽带 ry 漏检的重演）。
+v4 (038 补修，同轮)：v3 重跑 037，膝垫仍 0.0329 不通过——量法
+把埋进腿里的垫背顶点也算进去，0.03 厚的垫子背部埋进腿内 0.037；
+膝垫减薄 0.03→0.02、中心 y -0.095→-0.105，前面仍 0.011 凸出。
+v5 (038 再补修，同轮)：v4 重跑 037，膝垫仍 0.0305 不通过——
+诊断脚本定位到前上外角（±0.1725, -0.115, 0.45）离裤面 0.0305：
+平板的前角离曲面腿最远，收窄/减薄都只能降到 0.03 附近；
+膝垫改成贴腿曲面壳（前 0.011、背 -0.004 嵌进裤面，下沿一行跟
+靴筒圆面），膝条同款小曲面壳（垫面 0.007 凸出）。面数 833→941。
+曲面壳绕序按构造朝外、跳过 fix_normals（质心法会把底行前面翻
+成倒置，首跑每垫 3 面倒置）。
 Run: blender --background --python build_036.py
 """
 import os
@@ -70,8 +84,8 @@ JACKET_RINGS = [(1.50, 0.306, 0.160), (1.20, 0.304, 0.158),
                 (0.98, 0.300, 0.156), (0.86, 0.298, 0.155)]
 TROUSER_RINGS = [(0.62, 0.246, 0.128), (0.48, 0.240, 0.126),
                  (0.34, 0.232, 0.124)]
-BELT_RINGS = [(0.84, 0.262, 0.140), (0.78, 0.260, 0.139)]
-ROPE_RINGS = [(0.74, 0.258, 0.136), (0.70, 0.256, 0.135)]
+BELT_RINGS = [(0.84, 0.262, 0.144), (0.78, 0.260, 0.143)]
+ROPE_RINGS = [(0.74, 0.258, 0.140), (0.70, 0.256, 0.139)]
 PLEAT_ANGLES = [170, 200, 230, 320, 350, 20, 50, 110]  # all outside 240-300
 ARM_DIR = (0.14, 0, -1)  # mannequin arm direction (unit x flips per side)
 
@@ -223,12 +237,15 @@ def build_sleeve(m, sx):
 
 def build_cuff(m, sx):
     """Pearl cuff ring at the wrist (t 0.48-0.56 along the arm):
-    r 0.102, 0.006 proud of the sleeve end (0.096)."""
+    r 0.105, 0.0064 proud of the sleeve at the cuff top ring
+    (sleeve r 0.0986 at s 0.60, not the end 0.096 — 037 v1 lesson:
+    the old r 0.102 only cleared the sleeve end, giving a real gap
+    of 0.0034 at the cuff top ring; v3/038 raises the ring to 0.105)."""
     shoulder = Vector((sx * 0.33, 0, 1.22))
     direction = Vector((sx * ARM_DIR[0], 0, ARM_DIR[2]))
     origin = shoulder + direction.normalized() * 0.48
     return [make_tube("PearlCuff", origin, direction,
-                      [0.0, 0.08], [0.102, 0.102], 10,
+                      [0.0, 0.08], [0.105, 0.105], 10,
                       m["pearl"], caps=False)]
 
 
@@ -241,10 +258,11 @@ def build_belt(m):
 
 
 def build_belt_buckle(m):
-    """Gold belt buckle at the front centre (0, -0.1435, 0.81):
-    belt front at z 0.81 is y -0.1395, so the 0.012-thick box is
-    half-buried and 0.010 proud."""
-    return add_box("GoldBeltBuckle", (0, -0.1435, 0.81),
+    """Gold belt buckle at the front centre (0, -0.1475, 0.81):
+    belt front at z 0.81 is y -0.1435 (v3/038: belt ry +0.004 moved
+    the belt face out from -0.1395, so the buckle moves out with it),
+    so the 0.012-thick box is half-buried and 0.010 proud."""
+    return add_box("GoldBeltBuckle", (0, -0.1475, 0.81),
                    (0.05, 0.012, 0.04), m["gold"])
 
 
@@ -263,14 +281,109 @@ def build_trousers(m):
                                  m["pearl"], caps=False)]
 
 
+def build_curved_shell(name, rows, material):
+    """Closed thin curved shell from a grid of front/back point rows.
+    rows: list of (front_pts, back_pts), each a list of Vector of equal
+    length. Front grid + back grid + 4 edge strips = closed solid
+    (no boundary edges), so it passes the closed-solid topology check.
+    Winding is corrected by fix_normals() in main()."""
+    nrows = len(rows)
+    ncols = len(rows[0][0])
+    verts = []
+    for front, back in rows:
+        verts += [tuple(v) for v in front]
+        verts += [tuple(v) for v in back]
+
+    def F(iz, ia):
+        return iz * 2 * ncols + ia
+
+    def B(iz, ia):
+        return iz * 2 * ncols + ncols + ia
+
+    faces = []
+    # Winding is outward by construction (columns run inner->outer,
+    # i.e. +x, for both pads; rows run top->bottom): front faces
+    # point away from the leg (-y), back faces toward it (+y), edge
+    # strips point out of the plate. fix_normals() is NOT run on
+    # these shells (see main()): its centroid test misjudges the
+    # bottom-row front faces of a thin curved shell and flips them
+    # back inward (v5: 3 inverted faces per pad).
+    for iz in range(nrows - 1):
+        for ia in range(ncols - 1):
+            faces.append((F(iz, ia), F(iz + 1, ia),
+                          F(iz + 1, ia + 1), F(iz, ia + 1)))
+            faces.append((B(iz, ia), B(iz, ia + 1),
+                          B(iz + 1, ia + 1), B(iz + 1, ia)))
+    for iz in range(nrows - 1):
+        faces.append((F(iz, 0), B(iz, 0), B(iz + 1, 0), F(iz + 1, 0)))
+        faces.append((F(iz, ncols - 1), F(iz + 1, ncols - 1),
+                      B(iz + 1, ncols - 1), B(iz, ncols - 1)))
+    for ia in range(ncols - 1):
+        faces.append((F(0, ia), F(0, ia + 1), B(0, ia + 1), B(0, ia)))
+        faces.append((F(nrows - 1, ia), B(nrows - 1, ia),
+                      B(nrows - 1, ia + 1), F(nrows - 1, ia + 1)))
+    return mesh_from_data(name, verts, faces, material)
+
+
+def _trouser_shell_row(angles, z, front_off, back_off):
+    """One shell row following the pearl trouser ellipse at height z:
+    front points offset outward, back points embedded in the trouser."""
+    rx, ry = interp_rings(TROUSER_RINGS, z)
+    front, back = [], []
+    for a in angles:
+        p, n = ellipse_point(rx, ry, a)
+        front.append(Vector((p.x, p.y, z)) + n * front_off)
+        back.append(Vector((p.x, p.y, z)) + n * back_off)
+    return front, back
+
+
+def _boot_shell_row(sx, angles, z, front_off, back_off):
+    """One shell row following the charcoal boot circle (r 0.118)
+    around the leg axis (sx*0.13, 0) at height z — used for the pad
+    rows that hang below the trouser hem (z 0.34) onto the boot."""
+    cx = sx * 0.13
+    front, back = [], []
+    for a in angles:
+        t = math.radians(a)
+        d = Vector((math.cos(t), math.sin(t), 0.0))
+        front.append(Vector((cx, 0.0, z)) + d * (0.118 + front_off))
+        back.append(Vector((cx, 0.0, z)) + d * (0.118 + back_off))
+    return front, back
+
+
 def build_knee_pad(m, sx):
-    """Deep-teal knee pad: flat box at the knee front, half-buried
-    in the trouser face (front 0.011 proud) + cyan stripe box
-    0.007 proud of the pad face."""
-    pad = add_box("TealKneePad", (sx * 0.13, -0.10, 0.38),
-                  (0.12, 0.03, 0.14), m["teal"])
-    stripe = add_box("CyanKneeStripe", (sx * 0.13, -0.116, 0.38),
-                     (0.12, 0.012, 0.02), m["cyan"])
+    """Deep-teal knee pad + cyan stripe as curved shells following the
+    leg: the pad is a closed thin shell hugging the trouser ellipse
+    (front 0.011 proud, back 0.004 embedded), with its bottom row
+    following the boot circle below the trouser hem (z 0.34); the
+    stripe is a smaller shell on the pad front (0.007 proud).
+    v5/038: the flat box could not pass — 0.12 wide gave 0.0386,
+    0.085 wide gave 0.0329, 0.085 wide + thinned 0.02 gave 0.0305:
+    the flat pad's top-outer corner stands 0.03 off the curved leg
+    no matter how narrow it gets, because the leg curves away from
+    the flat face. A shell that follows the curvature puts every
+    vertex ~0.011 off its host instead. Winding note: the shell is
+    wound outward by construction and skipped by fix_normals() —
+    the centroid test flips the bottom-row front faces inward
+    (3 inverted faces per pad on the first v5 run)."""
+    if sx > 0:
+        tangles = [292, 298, 304, 310, 316]
+    else:
+        tangles = [224, 230, 236, 242, 248]
+    bangles = [250, 260, 270, 280, 290]
+    pad_rows = [
+        _trouser_shell_row(tangles, 0.45, 0.011, -0.004),
+        _trouser_shell_row(tangles, 0.40, 0.011, -0.004),
+        _trouser_shell_row(tangles, 0.34, 0.011, -0.004),
+        _boot_shell_row(sx, bangles, 0.31, 0.011, -0.004),
+    ]
+    stripe_rows = [
+        _trouser_shell_row(tangles, 0.39, 0.018, 0.008),
+        _trouser_shell_row(tangles, 0.38, 0.018, 0.008),
+        _trouser_shell_row(tangles, 0.37, 0.018, 0.008),
+    ]
+    pad = build_curved_shell("TealKneePad", pad_rows, m["teal"])
+    stripe = build_curved_shell("CyanKneeStripe", stripe_rows, m["cyan"])
     return [pad, stripe]
 
 
@@ -294,12 +407,16 @@ def build_boot(m, sx):
 
 
 def build_cap(m):
-    """Pearl sailor cap: dome sphere r 0.25, centre z 1.64, flattened
-    z 0.55, top 1.78 covering the hair cap top (1.75); teal band ring
+    """Pearl sailor cap: dome sphere r 0.25, centre z 1.65, flattened
+    z 0.55, top 1.79 covering the hair cap top (1.75); teal band ring
     z 1.60-1.56, r 0.252-0.250, 0.013 proud of the dome; white brim
     front panel arc 240-300 deg, z 1.59-1.585, r 0.300, bottom edge
-    1.585 above the eye line (crossing z 1.524) — 032 v2 lesson."""
-    dome = add_sphere("PearlCapDome", (0, 0.01, 1.64), 0.25, 12, 6,
+    1.585 above the eye line (crossing z 1.524) — 032 v2 lesson.
+    v3/038: dome centre raised 1.64 -> 1.65 — the old centre left the
+    visible dome only 0.0022 clear of the hair at the grazing line
+    (037); lifting the centre fattens the dome cross-section at the
+    crossing height and steepens the crossing angle."""
+    dome = add_sphere("PearlCapDome", (0, 0.01, 1.65), 0.25, 12, 6,
                       (1.0, 0.95, 0.55), m["pearl"])
     band = make_tube("TealCapBand", (0, 0, 1.60), (0, 0, -1),
                      [0.0, 0.04], [0.252, 0.250], 24,
@@ -324,11 +441,16 @@ def build_goggles(m):
 
 
 def build_streak(m):
-    """Cyan hair streak: flattened ellipsoid at the left front below
-    the cap brim (-0.11, -0.115, 1.44), lying on the hair surface.
-    Top z 1.49 stays below the brim bottom (1.585) — 031 v1 lesson:
-    a streak must not poke through the hat."""
-    return [add_sphere("HairStreak", (-0.11, -0.115, 1.44), 0.05, 8, 4,
+    """Cyan hair streak: flattened ellipsoid on the hair surface at
+    the left front (-0.12, -0.16, 1.47), lying outside the hair
+    ellipsoid so it reads from the front below the cap brim.
+    Top z 1.52 stays below the brim bottom (1.585) — 031 v1 lesson:
+    a streak must not poke through the hat. v3/038: moved from
+    (-0.11, -0.115, 1.44) — the old centre sat below the hairline
+    (z 1.462) and behind the head face (y -0.163), so all 26 vertices
+    were buried inside the head sphere and the streak was invisible
+    from every angle (037)."""
+    return [add_sphere("HairStreak", (-0.12, -0.16, 1.47), 0.05, 8, 4,
                        (0.55, 0.45, 1.0), m["cyan"])]
 
 
@@ -422,8 +544,14 @@ def assemble_sleeves(parts):
     ok = True
     ok &= check_gap("sleeve: teal sleeve vs mannequin arm @0.0",
                     0.125, 0.085)
+    # Cuff ring r 0.105 vs sleeve end 0.096, AND vs the sleeve radius
+    # at the cuff top ring (s 0.60 -> r 0.0986, not the end 0.096):
+    # 037 caught the old 0.102 ring clearing only the end (real gap
+    # 0.0034). Check both, not just the end.
     ok &= check_gap("sleeve: pearl cuff vs teal sleeve end",
-                    0.102, 0.096)
+                    0.105, 0.096)
+    ok &= check_gap("sleeve: pearl cuff vs teal sleeve @s=0.60",
+                    0.105, 0.0986)
     print("L2_CHECK sleeves: teal long sleeves over the arms, pearl "
           "cuffs at the wrists PASS")
     return objs, ok
@@ -438,6 +566,14 @@ def assemble_belt(parts):
     ok &= check_gap("belt: charcoal belt vs charcoal bodysuit @z=0.78",
                     interp_rings(BELT_RINGS, 0.78)[0],
                     interp_rings(BODYSUIT_RINGS, 0.78)[0])
+    # 037 lesson (034 hat-band ry blind spot, repeated): check ry too.
+    # Belt ry 0.144/0.143 vs bodysuit ry 0.1368/0.1356 (v3/038: +0.004).
+    ok &= check_gap("belt: charcoal belt vs charcoal bodysuit ry @z=0.84",
+                    interp_rings(BELT_RINGS, 0.84)[1],
+                    interp_rings(BODYSUIT_RINGS, 0.84)[1])
+    ok &= check_gap("belt: charcoal belt vs charcoal bodysuit ry @z=0.78",
+                    interp_rings(BELT_RINGS, 0.78)[1],
+                    interp_rings(BODYSUIT_RINGS, 0.78)[1])
     ok &= check_relief("belt: gold buckle relief", 0.010,
                        lo=0.005, hi=0.030)
     ok &= check_gap("belt: cyan rope coil vs charcoal bodysuit @z=0.74",
@@ -446,6 +582,13 @@ def assemble_belt(parts):
     ok &= check_gap("belt: cyan rope coil vs charcoal bodysuit @z=0.70",
                     interp_rings(ROPE_RINGS, 0.70)[0],
                     interp_rings(BODYSUIT_RINGS, 0.70)[0])
+    # Rope ry 0.140/0.139 vs bodysuit ry 0.1347/0.1338 (v3/038: +0.004).
+    ok &= check_gap("belt: cyan rope coil vs charcoal bodysuit ry @z=0.74",
+                    interp_rings(ROPE_RINGS, 0.74)[1],
+                    interp_rings(BODYSUIT_RINGS, 0.74)[1])
+    ok &= check_gap("belt: cyan rope coil vs charcoal bodysuit ry @z=0.70",
+                    interp_rings(ROPE_RINGS, 0.70)[1],
+                    interp_rings(BODYSUIT_RINGS, 0.70)[1])
     print("L2_CHECK belt: charcoal tactical belt below the jacket hem, "
           "gold buckle at the front, cyan rope coil under the belt PASS")
     return objs, ok
@@ -455,10 +598,12 @@ def assemble_head(parts):
     objs = (parts["cap"] + parts["goggles"] + parts["streak"]
             + parts["earrings"])
     ok = True
+    # Dome centre z 1.65 (v3/038): dome rx 0.2440 @z=1.62, 0.2500 @z=1.65;
+    # hair rx 0.2161 @z=1.62, 0.2016 @z=1.65.
     ok &= check_gap("head: pearl cap dome vs black hair cap @z=1.62",
-                    0.2473, 0.2162)
+                    0.2440, 0.2161)
     ok &= check_gap("head: pearl cap dome vs black hair cap @z=1.65",
-                    0.2493, 0.2016)
+                    0.2500, 0.2016)
     ok &= check_gap("head: teal cap band vs pearl cap dome @z=1.58",
                     0.252, 0.2249)
     ok &= check_gap("head: teal cap band vs black hair cap @z=1.58",
@@ -480,6 +625,8 @@ def assemble_legs(parts):
     ok = True
     ok &= check_gap("legs: pearl trousers vs mannequin legs @z=0.52",
                     interp_rings(TROUSER_RINGS, 0.52)[0], 0.1023)
+    # Knee pad centre relief 0.011 (v4/038: pad thinned to 0.02 and
+    # moved out to y -0.105; the QA nearest-host value is the real check).
     ok &= check_relief("legs: teal knee pad relief", 0.011,
                        lo=0.005, hi=0.030)
     ok &= check_relief("legs: cyan knee stripe relief", 0.007,
@@ -652,9 +799,14 @@ def main():
     l3_ok = assemble_outfit(parts, mannequin)
 
     # --- normal self-check (solids only; the compass disc keeps its
-    # construction winding — fix_normals must never run on flat discs) ---
+    # construction winding — fix_normals must never run on flat discs;
+    # the curved knee shells keep theirs too — fix_normals' centroid
+    # test misjudges their bottom-row front faces and flips them
+    # inward, v5: 3 inverted faces per pad) ---
     for obj in mannequin + costume:
         if obj.name.startswith("GoldCompass"):
+            continue
+        if obj.name.startswith(("TealKneePad", "CyanKneeStripe")):
             continue
         flipped = fix_normals(obj)
         if flipped:
