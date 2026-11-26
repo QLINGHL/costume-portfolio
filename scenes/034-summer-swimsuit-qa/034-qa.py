@@ -830,24 +830,33 @@ def main():
         "读作金耳钉，无漂浮。" % (
             protrusions["GoldEarring"]["lift"], earring_ideal,
             attach["earringL_vs_head"]["min"]))
-    warnings.append(
-        "[硬检查不通过] brief_tight_fit: 泳装下摆 vs 腿最小间隙 %.4f 米（0.005 构造线之下"
-        " 0.0006 米）：设计环表在 θ=0° 方向算得 0.0072 米（下摆底环 rx "
-        "0.236 vs 腿外沿 0.2288），但 12 边形下摆 vs 6 边形腿的刻面使底环"
-        " z 0.46 对角顶点（±0.2044, ±0.061）离腿面只有 %.4f 米。正间隙、"
-        "无相交、无视觉缺陷（031 v2 目视通过）；下次把下摆底环 rx "
-        "0.236→0.240、ry 0.122→0.124 即可回到 0.005 以上。" % (
-            gaps["brief_vs_legL"]["min"], gaps["brief_vs_legL"]["min"]))
-    warnings.append(
-        "[硬检查不通过] hatband_tight_fit: 藏青帽带 vs 白帽顶最小间隙 %.4f 米（0.005 构造"
-        "线之下 0.0044 米）：帽带 ry 按帽顶 rx（0.26）取值，未计帽顶球心"
-        " y +0.01 的偏置——帽顶在 z 1.62 的 +y 表面在 y 0.2564，帽带底环"
-        " ry 0.253 已在其内；底环 5 个顶点落在理想帽顶椭球内（q 0.973–"
-        "0.996，最深约 0.0034 米），网格间隙全靠帽顶 12×6 球面刻面向内收"
-        "才保持正值 %.4f 米。build_031 的 L2 只核了 rx，未核 ry。下次把帽"
-        "带 ry +0.006（底环 0.253→0.259、顶环 0.252→0.258）或把帽带中心"
-        " y +0.01。" % (gaps["hatBand_vs_crown"]["min"],
-                        gaps["hatBand_vs_crown"]["min"]))
+    # v3 (035 repair): the two tight-fit notes are failure-only — they
+    # were appended unconditionally before, so a passing re-run would
+    # still list them (with a stale hard-coded deficit) as warnings.
+    if not gaps["brief_vs_legL"]["ok"]:
+        warnings.append(
+            "[硬检查不通过] brief_tight_fit: 泳装下摆 vs 腿最小间隙 %.4f 米（0.005 构造线之下"
+            " %.4f 米）：设计环表在 θ=0° 方向算得 0.0112 米（下摆底环 rx "
+            "0.240 vs 腿外沿 0.2288），但 12 边形下摆 vs 6 边形腿的刻面使底环"
+            " z 0.46 对角顶点（±0.2078, ±0.062）离腿面只有 %.4f 米。正间隙、"
+            "无相交、无视觉缺陷；035 已把下摆底环 rx 0.236→0.240、ry "
+            "0.122→0.124，若仍不通过再把底环 rx +0.004、ry +0.002。" % (
+                gaps["brief_vs_legL"]["min"],
+                0.005 - gaps["brief_vs_legL"]["min"],
+                gaps["brief_vs_legL"]["min"]))
+    if not gaps["hatBand_vs_crown"]["ok"]:
+        warnings.append(
+            "[硬检查不通过] hatband_tight_fit: 藏青帽带 vs 白帽顶最小间隙 %.4f 米（0.005 构造"
+            "线之下 %.4f 米）：帽带 ry 按帽顶 rx（0.26）取值，未计帽顶球心"
+            " y +0.01 的偏置——帽顶在 z 1.62 的 +y 表面在 y 0.2564，帽带底环"
+            " ry 0.259 只在其外 0.0026 米；理想椭球间隙不足，网格间隙全靠"
+            "帽顶 12×6 球面刻面向内收才保持正值 %.4f 米。build_031 的 L2 v3"
+            "已补 ry 检查；035 已把帽带 ry +0.006（底环 0.253→0.259、顶环"
+            " 0.252→0.258），若仍不通过再把帽带 ry +0.004 或把帽带中心"
+            " y +0.01。" % (
+                gaps["hatBand_vs_crown"]["min"],
+                0.005 - gaps["hatBand_vs_crown"]["min"],
+                gaps["hatBand_vs_crown"]["min"]))
     warnings.append(
         "lens_lift_construction: 墨镜片离泳装面最远点 %.4f / %.4f 米（通用"
         "上限 0.03）：镜片是 0.012 厚、绕 z 倾 0.08 rad 的硬盒，挂在曲率"

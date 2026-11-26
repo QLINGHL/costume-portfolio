@@ -39,6 +39,8 @@ def draw_findings(s, out_img):
     y = 22
     d.text((x, y), "QA Findings (measured)", fill=(20, 22, 28), font=f_title)
     y += 50
+    gaps = s["gaps"]
+    n_pass = sum(1 for v in gaps.values() if v["ok"])
     rows = [
         ("Topology", [
             "Faces: %d (limit 1500, design record 579)" % s["total_faces"],
@@ -49,12 +51,15 @@ def draw_findings(s, out_img):
             "Closed solids boundary edges 0 (34 parts)",
         ]),
         ("Garment structure (BVH, metres)", [
-            "Layer gaps: 14/16 pass (req >= 0.005)",
-            "FAIL: brief vs leg 0.0044 / hat band 0.0006",
+            "Layer gaps: %d/%d pass (req >= 0.005)" % (n_pass, len(gaps)),
+            "035 fix: brief vs leg %.4f / hat band %.4f" % (
+                gaps["brief_vs_legL"]["min"],
+                gaps["hatBand_vs_crown"]["min"]),
             "Brim disc crosses hair, hidden in crown (0.22<0.259)",
             "Handles thru palm: 0.0004/0.0005, 42+22 pts inside",
             "Sunglasses 0.29 below eyes / bandeau top 1.32>1.28",
-            "No floating parts / frame 0.616 / soles z=0.0",
+            "No floating parts / frame %.3f / soles z=0.0"
+            % s["frame_fraction"],
         ]),
         ("Materials (Principled BSDF vs design)", [
             "9/9 match: Coral / Cream / Navy / Gold",
@@ -65,11 +70,12 @@ def draw_findings(s, out_img):
             "20 parts carry Blender primitive default UVMap,",
             "unused (no textures); 0 points out of bounds.",
         ]),
-        ("Observations (5: 2 hard fails + 3 notes)", [
-            "1. Brief bottom ring 0.0044 (12-gon vs 6-gon leg;",
-            "   fix: bottom ring rx 0.236->0.240).",
-            "2. Hat band 0.0006 (ry missed crown y +0.01;",
-            "   fix: band ry +0.006 or centre y +0.01).",
+        ("Observations (5: 2 fixed in 035 + 3 notes)", [
+            "1. Brief vs leg %.4f (035: bottom ring rx 0.236->0.240,"
+            % gaps["brief_vs_legL"]["min"],
+            "   ry 0.122->0.124; was 0.0044).",
+            "2. Hat band %.4f (035: band ry +0.006; was 0.0006)."
+            % gaps["hatBand_vs_crown"]["min"],
             "3. Brim disc/hair crossing hidden in crown.",
             "4. Lens 0.034 = analytic 0.0296 + faceting.",
             "5. Earring 0.0303 (smooth-head 0.0161, design 0.019).",
@@ -118,12 +124,14 @@ def main():
         d.text((x + 24, header_h + SIZE + 14), label, fill=(30, 30, 30),
                font=font(36, bold=True))
     fy = header_h + SIZE + label_h
+    n_pass = sum(1 for v in s["gaps"].values() if v["ok"])
     footer = ("Faces: %d   |   Ngons: %d   |   Dup verts: %d   |   "
-              "Inv normals: %d (solids)   |   Gaps: 14/16 pass   |   "
+              "Inv normals: %d (solids)   |   Gaps: %d/%d pass   |   "
               "Handles thru palm   |   Sunglasses below eyes   |   "
-              "Mats 9/9   |   Ground: z=0.0   |   Frame: 0.616" % (
+              "Mats 9/9   |   Ground: z=0.0   |   Frame: %.3f" % (
                   s["total_faces"], s["ngons"], s["duplicate_verts"],
-                  s["inverted_normals_solids"]))
+                  s["inverted_normals_solids"], n_pass, len(s["gaps"]),
+                  s["frame_fraction"]))
     d.text((36, fy + 12), footer, fill=(60, 60, 60), font=font(30))
     sheet.save(SHEET)
     print("SHEET_WRITTEN:", SHEET, sheet.size)

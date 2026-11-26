@@ -10,6 +10,9 @@ L1 小组件 -> L2 中组件 -> L3 大组件（整套穿到人体底座上试穿
 蓝帽针。宽檐帽用闭合圆柱体（不用 make_disc 单面片，相机在檐下）、
 墨镜挂胸前不遮眼。v2：遮阳帽檐 0.30→0.36、帽顶压扁 0.75→0.55、
 帽带上移至檐上、蓝挑染改蓝帽针（v1 挑染顶穿帽顶成帽上蓝斑）。
+v3（035，2026-11-26）：按 034 质检单修复两处 FAIL——泳装下摆底环
+rx 0.236→0.240、ry 0.122→0.124；帽带 ry +0.006（底环 0.253→0.259、
+顶环 0.252→0.258）；L2 补 ry 检查（此前只核 rx）。面数不变 579。
 Run: blender --background --python build_031.py
 """
 import os
@@ -70,13 +73,16 @@ SWIM_RINGS = [(1.32, 0.272, 0.142), (1.28, 0.278, 0.146),
               (1.00, 0.250, 0.138), (0.70, 0.224, 0.128),
               (0.62, 0.218, 0.126)]
 BRIEF_RINGS = [(0.62, 0.246, 0.128), (0.52, 0.242, 0.126),
-               (0.46, 0.236, 0.122)]
+               (0.46, 0.240, 0.124)]
 SHIRT_RINGS = [(1.42, 0.296, 0.155), (1.10, 0.300, 0.156),
                (0.80, 0.306, 0.158)]
 TRIM_RINGS = [(0.84, 0.312, 0.164), (0.80, 0.312, 0.164)]
 SARONG_RINGS = [(0.78, 0.252, 0.132), (0.62, 0.250, 0.130),
                 (0.48, 0.246, 0.128)]
-HATBAND_RINGS = [(1.66, 0.265, 0.252), (1.62, 0.266, 0.253)]
+# v3 (035 repair, 2026-11-26): band ry +0.006 — 034 QA found the band
+# 0.0006 vs the crown because the band ry was sized off the crown rx
+# (0.26) and missed the crown centre y +0.01 offset.
+HATBAND_RINGS = [(1.66, 0.265, 0.258), (1.62, 0.266, 0.259)]
 ARM_DIR = (0.14, 0, -1)  # mannequin arm direction (unit x flips per side)
 
 
@@ -152,7 +158,10 @@ def build_swimsuit(m):
 
 def build_brief(m):
     """Coral swimsuit bottom: tube around both leg tops, z 0.62-0.46,
-    reads as the one-piece brief. Open bottom, legs pass through."""
+    reads as the one-piece brief. Open bottom, legs pass through.
+    v3 (035 repair): bottom ring rx 0.236->0.240, ry 0.122->0.124 —
+    034 QA measured the diagonal 12-gon vertex only 0.0044 from the
+    6-gon leg surface (design ring calc said 0.0072 at theta=0)."""
     return [make_elliptical_tube("CoralBrief", BRIEF_RINGS, 12,
                                  m["coral"], caps=False)]
 
@@ -219,7 +228,9 @@ def build_hat(m):
     the brim at z 1.45) + flat dome crown sphere r 0.26, centre
     z 1.63, top 1.773, covering the hair cap top (1.75). v2: brim
     0.30->0.36 and crown flattened 0.75->0.55 — v1's narrow brim
-    and tall dome read as a white helmet, not a sun hat."""
+    and tall dome read as a white helmet, not a sun hat. v3 (035):
+    band ry +0.006 (see build_hatband) — 034 QA measured 0.0006 vs
+    the crown; the v2 ry missed the crown centre y +0.01 offset."""
     brim = make_elliptical_tube("WhiteHatBrim",
                                 [(1.622, 0.36, 0.36), (1.608, 0.36, 0.36)],
                                 24, m["cream"], caps=True)
@@ -232,7 +243,11 @@ def build_hatband(m):
     """Navy hat band around the crown base (z 1.66-1.62, 0.265):
     0.006 proud of the crown surface, sitting just above the brim.
     v2: raised 1.565-1.605 -> 1.62-1.66 with the flatter crown —
-    v1's band sat low on the forehead and read as a headband."""
+    v1's band sat low on the forehead and read as a headband.
+    v3 (035 repair): ry +0.006 (0.252->0.258 top, 0.253->0.259
+    bottom) — 034 QA measured 0.0006: the v2 ry was sized off the
+    crown rx (0.26) and missed the crown centre y +0.01 offset, so
+    the band's +y side sat inside the ideal crown ellipsoid."""
     return [make_elliptical_tube("NavyHatBand", HATBAND_RINGS, 16,
                                  m["navy"], caps=False)]
 
@@ -352,6 +367,13 @@ def assemble_torso(parts):
                     interp_rings(TORSO_RINGS, 1.00)[1])
     ok &= check_gap("torso: coral brief vs mannequin legs @z=0.55",
                     interp_rings(BRIEF_RINGS, 0.55)[0], 0.2323)
+    # v3 (035 repair): bottom ring vs leg outer extent at z=0.46
+    # (leg centre x 0.13 + radius 0.0988 at depth 0.16 = 0.2288).
+    # The 034 QA measured the diagonal 12-gon vertex, not theta=0,
+    # so the ring check is a gate only — the QA BVH re-run is the
+    # arbiter for the 0.005 line.
+    ok &= check_gap("torso: coral brief bottom ring vs legs @z=0.46",
+                    BRIEF_RINGS[-1][1], 0.2288)
     ok &= check_gap("torso: gold necklace vs mannequin neck", 0.105, 0.09)
     ok &= check_relief("torso: gold clasp relief", 0.005,
                        lo=0.005, hi=0.030)
@@ -395,6 +417,21 @@ def assemble_head(parts):
                     interp_rings(HATBAND_RINGS, 1.63)[0], 0.2600)
     ok &= check_gap("head: navy hat band vs white hat crown @z=1.65",
                     interp_rings(HATBAND_RINGS, 1.65)[0], 0.2574)
+    # v3 (035 repair): ry checks — 034 QA found the v2 band ry was
+    # sized off the crown rx and missed the crown centre y +0.01
+    # offset, so the band's +y side sat inside the ideal crown
+    # ellipsoid. Crown +y surface at z: 0.01 + 0.247*sqrt(1-((z-1.63)
+    # /0.143)^2). The 12x6 crown facets recede ~0.004 inside the ideal
+    # ellipsoid at the band heights (QA-measured relief), so the L2
+    # gate subtracts a 0.004 faceting allowance; the QA BVH re-run is
+    # the arbiter for the 0.005 line.
+    def crown_plus_y(z):
+        return 0.01 + 0.247 * math.sqrt(
+            max(0.0, 1.0 - ((z - 1.63) / 0.143) ** 2))
+    for z in (1.62, 1.66):
+        ok &= check_gap(
+            "head: navy hat band ry vs white hat crown +y @z=%.2f" % z,
+            interp_rings(HATBAND_RINGS, z)[1], crown_plus_y(z) - 0.004)
     ok &= check_gap("head: white hat brim vs white hat crown", 0.36, 0.26)
     ok &= check_relief("head: blue hat pin relief", 0.0165,
                        lo=0.005, hi=0.030)
@@ -471,6 +508,8 @@ def assemble_outfit(parts, mannequin):
                     interp_rings(BRIEF_RINGS, 0.62)[0])
     ok &= check_gap("L3 layer: navy hat band vs white hat crown @z=1.63",
                     interp_rings(HATBAND_RINGS, 1.63)[0], 0.2600)
+    ok &= check_gap("L3 layer: navy hat band ry vs crown +y @z=1.62",
+                    interp_rings(HATBAND_RINGS, 1.62)[1], 0.2564 - 0.004)
     ok &= check_gap("L3 layer: gold necklace vs mannequin neck",
                     0.105, 0.09)
     ok &= check_gap("L3 joint: white sleeve vs mannequin arm", 0.115, 0.085)
