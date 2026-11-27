@@ -326,11 +326,19 @@ def build_cat_ear(m, sx):
 
 
 def build_streak(m):
-    """Light-blue hair streak: flattened ellipsoid half-embedded in
-    the black hair cap, front-right below the hat brim (032
-    method). Top z 1.49 stays below the brim bottom (1.608) — 031
-    v1 lesson: a streak must not poke through the hat."""
-    return [add_sphere("HairStreak", (0.11, -0.125, 1.44), 0.05, 8, 4,
+    """Light-blue hair streak: flattened ellipsoid on the hair surface,
+    front-right below the hat brim (032 method). Top z 1.49 stays
+    below the brim bottom (1.608) — 031 v1 lesson: a streak must not
+    poke through the hat. v2/042: moved from (0.11, -0.125, 1.44) —
+    the old centre sat behind the head face (y -0.163 at this x/z),
+    so 25/26 vertices were buried inside the head sphere and the
+    streak was invisible from every angle (041 QA: visible 1/26,
+    lift 0.0000; 036's streak failed the same way in 037). New
+    centre (0.11, -0.175, 1.44) puts the front pole ~0.039 proud of
+    the head face, inside the 0.005-0.045 relief band (first try at
+    y -0.185 measured 0.0492 — coarse-sphere faceting pushes the mesh
+    reading above the ideal 0.044 — so pulled in 0.010)."""
+    return [add_sphere("HairStreak", (0.11, -0.175, 1.44), 0.05, 8, 4,
                        (0.55, 0.45, 1.0), m["lightblue"])]
 
 
