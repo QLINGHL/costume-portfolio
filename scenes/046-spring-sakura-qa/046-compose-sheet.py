@@ -1,0 +1,151 @@
+# -*- coding: utf-8 -*-
+"""046 compose (system python3 + PIL): compose the QA contact sheet for the
+045 spring-sakura urban set: beauty render + wireframe + QA findings panel
+(no UV panel: the costume uses procedural Principled materials, no textures,
+so there is no UV layout to draw — the findings panel carries the numbers).
+Run: python3 046-compose-sheet.py
+"""
+import json
+import os
+from PIL import Image, ImageDraw, ImageFont
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
+SUMMARY = os.path.join(HERE, "046-qa-summary.json")
+BEAUTY = os.path.join(ROOT, "renders", "045-spring-sakura.png")
+WIREFRAME = os.path.join(ROOT, "renders", "045-spring-sakura-wireframe.png")
+SHEET = os.path.join(ROOT, "renders", "046-spring-sakura-qa-sheet.png")
+
+SIZE = 1024
+
+
+def font(size, bold=False):
+    for path in ("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+                 if bold else
+                 "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+                 "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"):
+        if os.path.exists(path):
+            return ImageFont.truetype(path, size)
+    return ImageFont.load_default()
+
+
+def draw_findings(s, out_img):
+    """Text panel: the measured numbers behind the verdict."""
+    d = ImageDraw.Draw(out_img)
+    f_title = font(38, bold=True)
+    f_h = font(27, bold=True)
+    f_b = font(21)
+    x = 48
+    y = 22
+    d.text((x, y), "QA Findings (measured)", fill=(20, 22, 28), font=f_title)
+    y += 50
+    gaps = s["gaps"]
+    n_pass = sum(1 for v in gaps.values() if v["ok"])
+    rows = [
+        ("Topology", [
+            "Faces: %d (limit 1500, design record 791)" % s["total_faces"],
+            "Tris %d / Quads %d / Ngons %d (design 0)" % (
+                s["tris"], s["quads"], s["ngons"]),
+            "Duplicate verts 0 / loose edges 0 / non-manifold 0",
+            "Degenerate 0 / inv normals 34 solids (jacket 30 + loafer 2+2)",
+            "Band recalc 48 excl., geo 48/48 out; closed solids boundary 0",
+            "UV: 8 parts carry unused default UVMap, 0 out of bounds",
+        ]),
+        ("Garment structure (BVH, metres)", [
+            "Layer gaps: %d/%d pass (req >= 0.005)" % (n_pass, len(gaps)),
+            "Tightest: sock %.4f, cuff %.4f, belt %.4f, wedge %.4f,"
+            % (gaps["sockL_vs_leg"]["min"], gaps["cuffL_vs_sleeve"]["min"],
+               gaps["belt_vs_jacket"]["min"], gaps["wedgeL_vs_foot"]["min"]),
+            "band %.4f, beret vs hair %.4f (visible part only)."
+            % (gaps["band_vs_beret"]["min"],
+               gaps["beret_vs_hair"]["min"]),
+            "Beret 0.016 above eyes / glove 13 in glove + 7 in sleeve",
+            "Cat ears 4 in / 1 out, apex +0.071 above beret top",
+            "No floating parts / frame %.3f / soles z=0.0"
+            % s["frame_fraction"],
+        ]),
+        ("Inverted normals (FAIL - 1 item)", [
+            "Jacket 30/30 faces inward (geo dots -0.83 to -1.00)",
+            "Loafer wedge 2/6 each (bottom + front side, -1.00/-0.994)",
+            "Cause: build_045 skips fix_normals for all Sakura* objects.",
+            "Fix (047): fix_normals on SakuraJacket + SakuraLoafer,",
+            "rebuild 045, re-run 046 QA to PASS.",
+        ]),
+        ("Sakura flowers & pleats", [
+            "Flowers x5: 0.0089-0.0102 relief (req 0.005-0.02)",
+            "Beret flower 0.0272, analytic 0.0201 (diff 0.0071)",
+            "Pleats x8: analytic 0.0260-0.0261 (req 0.020-0.032)",
+            "mesh 0.0276-0.0322 (16-seg facet sagitta, corrected)",
+            "Flowers at 270/262/278/225/315 deg, beret flower 300 deg",
+            "Buckle 0.0144 / shoe buckle 0.0154 / earring 0.0189",
+            "Branch: stem 2.2922 off skirt, mid blossom clear 0.180",
+        ]),
+        ("Materials (Principled BSDF vs design)", [
+            "9/9 match: SakuraPink / Cream / Navy / SakuraRed",
+            "Gold / LightBlue / Hair Black / Skin / Eye Dark",
+            "No texture maps (procedural colours only)",
+        ]),
+        ("Hair streak visible", [
+            "Streak visible 22/26 verts, lift 0.0397 (req 0.005-0.045): PASS",
+            "042-proven position (0.11, -0.175, 1.44), flat on hair.",
+        ]),
+    ]
+    for title, lines in rows:
+        d.text((x, y), title, fill=(30, 34, 42), font=f_h)
+        y += 30
+        for line in lines:
+            d.text((x + 16, y), line, fill=(60, 60, 66), font=f_b)
+            y += 25
+        y += 4
+    return out_img
+
+
+def main():
+    with open(SUMMARY, encoding="utf-8") as fh:
+        s = json.load(fh)
+
+    beauty = Image.open(BEAUTY).convert("RGB").resize((SIZE, SIZE))
+    wire = Image.open(WIREFRAME).convert("RGB").resize((SIZE, SIZE))
+    findings = Image.new("RGB", (SIZE, SIZE), (250, 250, 252))
+    draw_findings(s, findings)
+
+    header_h, label_h, footer_h = 110, 70, 64
+    W = SIZE * 3
+    H = header_h + SIZE + label_h + footer_h
+    sheet = Image.new("RGB", (W, H), (245, 245, 247))
+    d = ImageDraw.Draw(sheet)
+    d.rectangle([0, 0, W, header_h], fill=(30, 34, 42))
+    d.text((36, 26), "Asset QA Sheet  |  Spring-Sakura Urban Set (045)",
+           fill=(255, 255, 255), font=font(48, bold=True))
+    n_fail = len(s["fail_items"])
+    verdict = "FAIL - %d ITEMS" % n_fail if not s["overall_pass"] else "PASS"
+    if s["overall_pass"] and s.get("warnings"):
+        verdict = "PASS + %d NOTES" % len(s["warnings"])
+    vcol = (80, 200, 120) if s["overall_pass"] else (230, 120, 60)
+    d.text((W - 480, 34), verdict, fill=vcol, font=font(44, bold=True))
+    panels = [(beauty, "1  Beauty Render"),
+              (wire, "2  Wireframe / Topology"),
+              (findings, "3  QA Findings (measured)")]
+    for i, (img, label) in enumerate(panels):
+        x = i * SIZE
+        sheet.paste(img, (x, header_h))
+        d.rectangle([x, header_h + SIZE, x + SIZE, header_h + SIZE + label_h],
+                    fill=(235, 235, 238))
+        d.text((x + 24, header_h + SIZE + 14), label, fill=(30, 30, 30),
+               font=font(36, bold=True))
+    fy = header_h + SIZE + label_h
+    n_pass = sum(1 for v in s["gaps"].values() if v["ok"])
+    footer = ("Faces: %d   |   Ngons: %d   |   Dup verts: %d   |   "
+              "Inv normals: %d (solids)   |   Gaps: %d/%d pass   |   "
+              "Jacket 30 inverted / Loafer 2+2   |   "
+              "Mats 9/9   |   Ground: z=0.0   |   Frame: %.3f" % (
+                  s["total_faces"], s["ngons"], s["duplicate_verts"],
+                  s["inverted_normals_solids"], n_pass, len(s["gaps"]),
+                  s["frame_fraction"]))
+    d.text((36, fy + 12), footer, fill=(60, 60, 60), font=font(30))
+    sheet.save(SHEET)
+    print("SHEET_WRITTEN:", SHEET, sheet.size)
+
+
+if __name__ == "__main__":
+    main()
