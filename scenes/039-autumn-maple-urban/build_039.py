@@ -290,12 +290,17 @@ def build_beret(m):
 
 def build_beret_band(m):
     """Navy beret band: 3-ring tube following the beret's curvature
-    (z 1.66-1.62, r 0.2616/0.2479/0.2232, each 0.006 proud of the
+    (z 1.66-1.62, r 0.2616/0.2479/0.230, each 0.006 proud of the
     dome). The flattened dome narrows fast at this height (r 0.2556
     at 1.66 -> 0.2172 at 1.62), so a single ring would float 0.15
-    off the dome at its bottom edge."""
+    off the dome at its bottom edge. v3/044: bottom ring 0.2232->0.230
+    — 043 measured the old bottom ring only 0.0042 from the dome: the
+    beret is a 12x6 faceted sphere, and its ring vertex at z 1.625
+    (r 0.2252) is wider than the ideal sphere (0.2172) at that height
+    and sits only 0.0054 above the band bottom ring; the new bottom
+    ring clears that ring vertex by ~0.0072 in true 3D distance."""
     return [make_tube("NavyBeretBand", (0, 0.01, 1.66), (0, 0, -1),
-                      [0.0, 0.02, 0.04], [0.2616, 0.2479, 0.2232], 24,
+                      [0.0, 0.02, 0.04], [0.2616, 0.2479, 0.230], 24,
                       m["navy"], caps=False)]
 
 
@@ -325,11 +330,20 @@ def build_cat_ear(m, sx):
 
 
 def build_streak(m):
-    """Light-blue hair streak: flattened ellipsoid half-embedded in
-    the black hair cap, front-right below the beret band (032
-    method). Top z 1.49 stays below the band bottom (1.62) — 031
-    v1 lesson: a streak must not poke through the hat."""
-    return [add_sphere("HairStreak", (0.11, -0.125, 1.44), 0.05, 8, 4,
+    """Light-blue hair streak: flattened ellipsoid on the hair surface,
+    front-right below the beret band (032 method). Top z 1.49 stays
+    below the band bottom (1.62) — 031 v1 lesson: a streak must not
+    poke through the hat. v2/044: moved from (0.11, -0.125, 1.44) —
+    the old centre sat behind the head face (y -0.163 at this x/z),
+    so 25/26 vertices were buried inside the head sphere and the
+    streak was invisible from every angle (043 QA: visible 1/26,
+    lift 0.0000; 036's streak failed the same way in 037, 040 v1 in
+    041). New centre (0.11, -0.175, 1.44) puts the front pole ~0.039
+    proud of the head face, inside the 0.005-0.045 relief band
+    (042-verified on 040: first try at y -0.185 measured 0.0492 —
+    coarse-sphere faceting pushes the mesh reading above the ideal
+    0.044 — so pulled in 0.010)."""
+    return [add_sphere("HairStreak", (0.11, -0.175, 1.44), 0.05, 8, 4,
                        (0.55, 0.45, 1.0), m["lightblue"])]
 
 
@@ -456,8 +470,20 @@ def assemble_head(parts):
                     0.2616, 0.2556)
     ok &= check_gap("head: navy beret band vs caramel beret @z=1.64",
                     0.2479, 0.2420)
-    ok &= check_gap("head: navy beret band vs caramel beret @z=1.62",
-                    0.2232, 0.2172)
+    # 043 lesson: the ideal-sphere radius (0.2172) understates the
+    # faceted beret at this height — the 12x6 sphere's ring vertex at
+    # z 1.6254 has r 0.2252, and it is the nearest beret feature to
+    # the band bottom ring vertex (r 0.230, z 1.62), so the real
+    # clearance is the 3D distance to that vertex, not the radial
+    # difference (the old radial check claimed 0.0060 while the mesh
+    # measured 0.0042). v3/044 bottom ring 0.2232->0.230.
+    band_bottom_gap = round(math.hypot(0.230 - 0.2252, 1.62 - 1.6254), 4)
+    band_bottom_ok = band_bottom_gap >= MIN_GAP
+    print("L2_CHECK head: navy beret band vs caramel beret @z=1.62 "
+          "(faceted ring vertex) gap=%.4f min=%.3f %s"
+          % (band_bottom_gap, MIN_GAP,
+             "PASS" if band_bottom_ok else "FAIL"))
+    ok &= band_bottom_ok
     ok &= check_gap("head: navy beret band vs black hair cap @z=1.62",
                     0.2232, 0.2161)
     ok &= check_gap("head: caramel beret bottom vs eye line",

@@ -65,9 +65,9 @@ def draw_findings(s, out_img):
             % s["frame_fraction"],
         ]),
         ("Beret band (3 rings follow the dome)", [
-            "Bottom ring 0.0042 vs dome (req 0.005): FAIL",
-            "Design 0.006 vs ideal sphere; faceted ring 0.2252 > bottom 0.2232.",
-            "Fix: bottom ring 0.2232 -> 0.230, then re-run QA (044).",
+            "Bottom ring 0.0072 vs dome (req 0.005): PASS",
+            "044 fix: bottom ring 0.2232 -> 0.230; faceted ring 0.2252 at z 1.625.",
+            "Re-run 043 QA: band 0.0072, gaps 19/19, overall PASS.",
         ]),
         ("Maple leaves & pleats", [
             "Leaves x5: 0.0092-0.0117 relief (req 0.005-0.02)",
@@ -82,11 +82,10 @@ def draw_findings(s, out_img):
             "Gold / LightBlue / Hair Black / Skin / Eye Dark",
             "No texture maps (procedural colours only)",
         ]),
-        ("FAIL: hair streak invisible", [
-            "Streak visible 1/26 verts, lift 0.0000 (req >= 0.005):",
-            "the streak sits inside the head sphere (front y -0.146",
-            "vs head surface -0.164) — nothing shows under the beret.",
-            "Fix: move the streak to (0.11, -0.175, 1.44) (042-proven).",
+        ("Hair streak visible", [
+            "Streak visible 22/26 verts, lift 0.0397 (req 0.005-0.045): PASS",
+            "044 fix: centre (0.11, -0.125, 1.44) -> (0.11, -0.175, 1.44),",
+            "flat on the hair surface (042-proven on 040).",
         ]),
     ]
     for title, lines in rows:
@@ -136,7 +135,7 @@ def main():
     n_pass = sum(1 for v in s["gaps"].values() if v["ok"])
     footer = ("Faces: %d   |   Ngons: %d   |   Dup verts: %d   |   "
               "Inv normals: %d (solids)   |   Gaps: %d/%d pass   |   "
-              "Band 0.0042 / Streak 1/26 visible, lift 0.0000   |   "
+              "Band 0.0072 / Streak 22/26 visible, lift 0.0397   |   "
               "Mats 9/9   |   Ground: z=0.0   |   Frame: %.3f" % (
                   s["total_faces"], s["ngons"], s["duplicate_verts"],
                   s["inverted_normals_solids"], n_pass, len(s["gaps"]),
