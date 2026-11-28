@@ -1265,15 +1265,22 @@ def main():
         "网格值与解析值之差 ≤ 0.007），八片全过；褶裥几何与设计一致，"
         "不是漂浮（041 帽上雨滴、037 护目镜片、034 墨镜片、043 枫叶帽针"
         "同款量法修正）。")
-    warnings.append(
-        "[硬检查不通过] normals_inverted: 樱粉开衫 30/30 面法向朝内"
-        "（几何验证：面法向与管轴向外径向点积 -0.83–-1.00）、樱粉乐福鞋楔"
-        "每只 2/6 面朝内（底面与前侧面，点积 -1.00/-0.994）：build_045 对"
-        "所有 Sakura* 对象跳过 fix_normals，make_elliptical_tube 的开襟弧"
-        "（300°–600°）与 make_wedge 的底面/前侧面绕序朝内；039 的风衣经"
-        " fix_normals 故为 0。修复法：build_045 里对 SakuraJacket 与 "
-        "SakuraLoafer 跑 fix_normals（扁平樱花贴片仍跳过），重跑 build_045 "
-        "生成新 blend，再重跑本单。")
+    if solid_inv > 0:
+        warnings.append(
+            "[硬检查不通过] normals_inverted: 樱粉开衫 30/30 面法向朝内"
+            "（几何验证：面法向与管轴向外径向点积 -0.83–-1.00）、樱粉乐福鞋楔"
+            "每只 2/6 面朝内（底面与前侧面，点积 -1.00/-0.994）：build_045 对"
+            "所有 Sakura* 对象跳过 fix_normals，make_elliptical_tube 的开襟弧"
+            "（300°–600°）与 make_wedge 的底面/前侧面绕序朝内；039 的风衣经"
+            " fix_normals 故为 0。修复法：build_045 里对 SakuraJacket 与 "
+            "SakuraLoafer 跑 fix_normals（扁平樱花贴片仍跳过），重跑 build_045 "
+            "生成新 blend，再重跑本单。")
+    else:
+        warnings.append(
+            "normals_fixed_047: 实体倒置法线 0（047 修复：build_045 对 "
+            "SakuraJacket 与 SakuraLoafer 跑 fix_normals，扁平樱花贴片仍跳过；"
+            "初版 046 检出开衫 30/30 面朝内、鞋楔每只 2/6 面朝内，修复后重跑"
+            "本单复核通过）。")
     if not protrusions["HairStreak"]["ok"]:
         warnings.append(
             "[硬检查不通过] streak_invisible: 浅蓝挑染可见顶点 %d / %d 个"
@@ -1547,11 +1554,17 @@ def main():
         f.write("- 法线朝外一致（与 Blender recalc_face_normals 的外法线逐面比对）："
                 "倒置面 %d 个（服装部件，扁平贴片与帽带 recalc 误判除外），%s\n"
                 % (solid_inv, verdict(solid_inv == 0)))
-        f.write("- 樱粉开衫倒置面 30 个（开襟弧面管，几何验证 30/30 朝内，点积"
-                " -0.83–-1.00）：绕序朝内是真缺陷，不是 recalc 误判；樱粉乐福鞋楔"
-                "每只倒置 2 面（底面与前侧面，几何验证点积 -1.00/-0.994）："
-                "build_045 对所有 Sakura* 对象跳过 fix_normals，见第 7 节 "
-                "normals_inverted。\n")
+        if solid_inv > 0:
+            f.write("- 樱粉开衫倒置面 30 个（开襟弧面管，几何验证 30/30 朝内，点积"
+                    " -0.83–-1.00）：绕序朝内是真缺陷，不是 recalc 误判；樱粉乐福鞋楔"
+                    "每只倒置 2 面（底面与前侧面，几何验证点积 -1.00/-0.994）："
+                    "build_045 对所有 Sakura* 对象跳过 fix_normals，见第 7 节 "
+                    "normals_inverted。\n")
+        else:
+            f.write("- 樱粉开衫与乐福鞋楔：047 修复后实体倒置面 0（build_045 对 "
+                    "SakuraJacket 与 SakuraLoafer 跑 fix_normals，扁平樱花贴片仍"
+                    "跳过；初版 046 检出开衫 30/30 面朝内、鞋楔每只 2/6 面朝内，"
+                    "见第 7 节 normals_fixed_047）。\n")
         f.write("- 樱花扁平贴片（樱花纹×5、帽上樱花、枝上樱花×3）倒置面 %d 个：单面"
                 "扇形三角不适用质心法向检查，法线靠构造绕序保证朝外（make_sakura_patch，"
                 "039 星形贴片的标准；build_045 跳过对它们的 fix_normals），不计入实体"

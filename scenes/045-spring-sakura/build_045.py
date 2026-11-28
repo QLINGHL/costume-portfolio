@@ -700,9 +700,15 @@ def main():
 
     # --- normal self-check (solids only; the flat sakura patches keep
     # their construction winding — fix_normals must never run on
-    # flat patches) ---
+    # flat patches). 047 fix: SakuraJacket (open-front elliptical tube,
+    # 30/30 faces wound inward) and SakuraLoafer (wedge, 2/6 faces per
+    # shoe wound inward) DO run fix_normals — 046 found 34 inverted
+    # solid faces because every Sakura* object was skipped here.
+    # Base-name match: the second loafer is "SakuraLoafer.001". ---
+    FIX_NORMALS = {"SakuraJacket", "SakuraLoafer"}
     for obj in mannequin + costume:
-        if obj.name.startswith("Sakura"):
+        if (obj.name.startswith("Sakura")
+                and obj.name.split(".")[0] not in FIX_NORMALS):
             continue
         flipped = fix_normals(obj)
         if flipped:

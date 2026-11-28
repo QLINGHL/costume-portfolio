@@ -50,8 +50,8 @@
   "degenerate_faces": 0,
   "boundary_edges_total": 523,
   "boundary_edges_closed_solids": 0,
-  "inverted_normals": 82,
-  "inverted_normals_solids": 34,
+  "inverted_normals": 48,
+  "inverted_normals_solids": 0,
   "inverted_normals_band_recalc_excluded": 48,
   "band_normals_geometric": {
     "outward": 48,
@@ -60,7 +60,7 @@
   },
   "inverted_normals_flat_patches": 0,
   "inverted_normals_ribbon_recalc": 0,
-  "topo_ok": false,
+  "topo_ok": true,
   "uv_parts_with_layer": 8,
   "uv_parts": [
     "GoldBeltBuckle",
@@ -880,9 +880,7 @@
   "sole_min_z": 0.0,
   "ground_ok": true,
   "foot_min_z": 0.0,
-  "fail_items": [
-    "拓扑（重叠顶点/散边/非流形边/退化面/闭合实体边界边/实体倒置法线）"
-  ],
+  "fail_items": [],
   "top_z": 1.86,
   "top_object": "NavyCatEar",
   "frame_fraction": 0.648,
@@ -1011,7 +1009,7 @@
     "branch_held_in_palm: 藏青樱花枝从右手腕沿 (0.553, -0.352, 0.755) 斜出 0.55 米（040 雨伞的做法）：实测手腕 (0.4063, 0.0000, 0.6753)，与设计值误差 0.0000 米；枝干 s 范围 -0.0000–0.5500 米（设计 0–0.55），最大径向 0.0120 米（枝干半径 0.012–0.008）；枝干在 z 0.90 处离裙面椭圆归一化值 2.2922（要求 > 1.15）；中朵离袖轴 0.3139 米、袖筒半径 0.1039 米、瓣半径 0.030，净空 0.1800 米；3 朵樱花花心均落在枝干轴上（误差 ≤ 0.002 米），法向朝向相机（(0,-1,0.35)，点积 > 0.99）；枝干起点在腕部袖口筒内（离手掌最小 0.0511 米、离袖筒最小 0.0000 米），属握持构造、不是穿帮。",
     "catear_emerges: 藏青猫耳基部埋进贝雷帽（左耳 4 个顶点在帽面内、1 个在外，右耳 4 个在内、1 个在外），耳尖 z 1.860 米在帽顶 1.789 米之上 0.071 米，猫耳从帽里探出。",
     "pleat_relief_sagitta: 藏青百褶裙褶裥片×8 外沿设计浮雕 0.026 米，是按光滑裙锥（环插值）算的；裙面是 16 段刻面筒，网格实测凸起含刻面矢高（rx 0.335 处最大 0.0064）：170°/350° 两片落在刻面中部，网格实测 0.0322 米、理想锥面解析值 0.0261 米，差 0.0061 米；其余六片网格实测 0.0276–0.0295 米、解析值 0.0260–0.0261 米，差 0.0015–0.0035 米。判定按理想锥面解析值（要求 0.020–0.032，网格值与解析值之差 ≤ 0.007），八片全过；褶裥几何与设计一致，不是漂浮（041 帽上雨滴、037 护目镜片、034 墨镜片、043 枫叶帽针同款量法修正）。",
-    "[硬检查不通过] normals_inverted: 樱粉开衫 30/30 面法向朝内（几何验证：面法向与管轴向外径向点积 -0.83–-1.00）、樱粉乐福鞋楔每只 2/6 面朝内（底面与前侧面，点积 -1.00/-0.994）：build_045 对所有 Sakura* 对象跳过 fix_normals，make_elliptical_tube 的开襟弧（300°–600°）与 make_wedge 的底面/前侧面绕序朝内；039 的风衣经 fix_normals 故为 0。修复法：build_045 里对 SakuraJacket 与 SakuraLoafer 跑 fix_normals（扁平樱花贴片仍跳过），重跑 build_045 生成新 blend，再重跑本单。"
+    "normals_fixed_047: 实体倒置法线 0（047 修复：build_045 对 SakuraJacket 与 SakuraLoafer 跑 fix_normals，扁平樱花贴片仍跳过；初版 046 检出开衫 30/30 面朝内、鞋楔每只 2/6 面朝内，修复后重跑本单复核通过）。"
   ],
-  "overall_pass": false
+  "overall_pass": true
 }

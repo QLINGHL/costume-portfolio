@@ -47,7 +47,7 @@ def draw_findings(s, out_img):
             "Tris %d / Quads %d / Ngons %d (design 0)" % (
                 s["tris"], s["quads"], s["ngons"]),
             "Duplicate verts 0 / loose edges 0 / non-manifold 0",
-            "Degenerate 0 / inv normals 34 solids (jacket 30 + loafer 2+2)",
+            "Degenerate 0 / inv normals 0 solids (047 fixed jacket+loafer)",
             "Band recalc 48 excl., geo 48/48 out; closed solids boundary 0",
             "UV: 8 parts carry unused default UVMap, 0 out of bounds",
         ]),
@@ -64,12 +64,10 @@ def draw_findings(s, out_img):
             "No floating parts / frame %.3f / soles z=0.0"
             % s["frame_fraction"],
         ]),
-        ("Inverted normals (FAIL - 1 item)", [
-            "Jacket 30/30 faces inward (geo dots -0.83 to -1.00)",
-            "Loafer wedge 2/6 each (bottom + front side, -1.00/-0.994)",
-            "Cause: build_045 skips fix_normals for all Sakura* objects.",
-            "Fix (047): fix_normals on SakuraJacket + SakuraLoafer,",
-            "rebuild 045, re-run 046 QA to PASS.",
+        ("Inverted normals (047 fixed)", [
+            "Jacket 0 inverted / loafer wedge 0 each (was 30 + 2+2)",
+            "Fix: fix_normals on SakuraJacket + SakuraLoafer,",
+            "flat sakura patches still skipped; 046 re-run PASS.",
         ]),
         ("Sakura flowers & pleats", [
             "Flowers x5: 0.0089-0.0102 relief (req 0.005-0.02)",
@@ -137,7 +135,7 @@ def main():
     n_pass = sum(1 for v in s["gaps"].values() if v["ok"])
     footer = ("Faces: %d   |   Ngons: %d   |   Dup verts: %d   |   "
               "Inv normals: %d (solids)   |   Gaps: %d/%d pass   |   "
-              "Jacket 30 inverted / Loafer 2+2   |   "
+              "Jacket 0 inverted / Loafer 0 (047 fixed)   |   "
               "Mats 9/9   |   Ground: z=0.0   |   Frame: %.3f" % (
                   s["total_faces"], s["ngons"], s["duplicate_verts"],
                   s["inverted_normals_solids"], n_pass, len(s["gaps"]),
