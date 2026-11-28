@@ -1,0 +1,993 @@
+{
+  "asset": "048-christmas-festival",
+  "blend": "scenes/048-christmas-festival/048-christmas-festival.blend",
+  "parts": 44,
+  "families": {
+    "SnowSweater": 64,
+    "RedCoat": 60,
+    "GoldStar": 50,
+    "RedPleat": 80,
+    "SnowFurCollar": 15,
+    "NavySleeve": 120,
+    "SnowCuff": 20,
+    "PineBelt": 16,
+    "GoldBeltBuckle": 6,
+    "NavyTrousers": 24,
+    "RedBoot": 20,
+    "RedBootSole": 12,
+    "SnowBootCuff": 20,
+    "GoldBootBuckle": 12,
+    "SantaHatCone": 12,
+    "SantaHatTip": 8,
+    "SantaHatPompom": 32,
+    "SnowHatBrim": 16,
+    "GoldStarHat": 10,
+    "HairStreak": 32,
+    "GoldEarring": 36,
+    "PineGlove": 24,
+    "GiftBox": 6,
+    "GiftRibbonX": 6,
+    "GiftRibbonY": 6,
+    "GiftBow": 18
+  },
+  "total_faces": 725,
+  "total_verts": 896,
+  "tris": 180,
+  "quads": 545,
+  "ngons": 0,
+  "ngons_expected": 0,
+  "ngons_ok": true,
+  "faces_expected": 725,
+  "faces_match": true,
+  "face_limit": 1500,
+  "faces_ok": true,
+  "duplicate_verts": 0,
+  "loose_edges": 0,
+  "nonmanifold_edges": 0,
+  "degenerate_faces": 0,
+  "boundary_edges_total": 410,
+  "boundary_edges_closed_solids": 0,
+  "inverted_normals": 0,
+  "inverted_normals_solids": 0,
+  "inverted_normals_flat_patches": 0,
+  "topo_ok": true,
+  "uv_parts_with_layer": 12,
+  "uv_parts": [
+    "GiftBow",
+    "GiftBox",
+    "GiftRibbonX",
+    "GiftRibbonY",
+    "GoldBeltBuckle",
+    "GoldBootBuckle",
+    "GoldBootBuckle.001",
+    "GoldEarring",
+    "GoldEarring.001",
+    "HairStreak",
+    "PineGlove",
+    "SantaHatPompom"
+  ],
+  "uv_out_of_bounds": 0,
+  "empty_material_slots": 0,
+  "mannequin_faces": 442,
+  "gaps": {
+    "sweater_vs_torso": {
+      "min": 0.0095,
+      "median": 0.0406,
+      "samples": 80,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "coat_vs_sweater": {
+      "min": 0.0111,
+      "median": 0.0342,
+      "samples": 80,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "collar_vs_coat": {
+      "min": 0.0081,
+      "median": 0.1041,
+      "samples": 32,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "sleeveL_vs_arm": {
+      "min": 0.027,
+      "median": 0.0396,
+      "samples": 52,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "sleeveR_vs_arm": {
+      "min": 0.027,
+      "median": 0.0396,
+      "samples": 52,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "cuffL_vs_sleeve": {
+      "min": 0.0064,
+      "median": 0.0135,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "cuffR_vs_sleeve": {
+      "min": 0.0064,
+      "median": 0.0135,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "belt_vs_coat": {
+      "min": 0.0086,
+      "median": 0.0098,
+      "samples": 32,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "trousers_vs_legL": {
+      "min": 0.006,
+      "median": 0.0878,
+      "samples": 36,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "trousers_vs_legR": {
+      "min": 0.006,
+      "median": 0.0878,
+      "samples": 36,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "bootL_vs_leg": {
+      "min": 0.024,
+      "median": 0.04,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "bootR_vs_leg": {
+      "min": 0.024,
+      "median": 0.04,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "bootcuffL_vs_boot": {
+      "min": 0.006,
+      "median": 0.0209,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "bootcuffR_vs_boot": {
+      "min": 0.006,
+      "median": 0.0209,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "soleL_vs_foot": {
+      "min": 0.0086,
+      "median": 0.0099,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "soleR_vs_foot": {
+      "min": 0.0086,
+      "median": 0.0099,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "hatcone_vs_hair": {
+      "min": 0.0319,
+      "median": 0.191,
+      "samples": 24,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "hatcone_vs_hair_z166": {
+      "min": 0.023,
+      "median": 0.0332,
+      "samples": 72,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "brim_vs_hair": {
+      "min": 0.0284,
+      "median": 0.0464,
+      "samples": 32,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "hatcone_vs_brim": {
+      "min": 0.0058,
+      "median": 0.3664,
+      "samples": 24,
+      "minimum": 0.005,
+      "ok": true
+    }
+  },
+  "gaps_ok": true,
+  "hat_cone_measured": {
+    "base_z": 1.64,
+    "tip_z": 1.94,
+    "base_r": 0.235,
+    "design_base_r": 0.235,
+    "design_tip_z": 1.94,
+    "r_at_z1.66": 0.2213,
+    "design_r_at_z1.66": 0.2213
+  },
+  "brim_vs_eyes": {
+    "brim_bottom_z": 1.59,
+    "brim_top_z": 1.64,
+    "brim_radius": 0.248,
+    "eye_z": [
+      1.495,
+      1.555
+    ],
+    "brim_bottom_above_eye_top": true,
+    "clearance": 0.035,
+    "hatcone_vs_hair_min": 0.0319,
+    "hatcone_vs_hair_z166_min": 0.023,
+    "brim_vs_hair_min": 0.0284,
+    "ok": true
+  },
+  "collar_wedge": {
+    "verts_inside_wedge_240_300": 0,
+    "inside_points": [],
+    "arc_end_verts_on_240_300": 4,
+    "edge_points": [
+      [
+        0.162,
+        -0.281,
+        1.54,
+        300.0
+      ],
+      [
+        -0.162,
+        -0.281,
+        1.54,
+        240.0
+      ],
+      [
+        0.16,
+        -0.277,
+        1.48,
+        300.0
+      ],
+      [
+        -0.16,
+        -0.277,
+        1.48,
+        240.0
+      ]
+    ],
+    "collar_vs_coat_min": 0.0081,
+    "ok": true
+  },
+  "attachments": {
+    "star_GoldStar_vs_host": {
+      "min": 0.0052,
+      "median": 0.0075,
+      "samples": 11,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "star_GoldStar_001_vs_host": {
+      "min": 0.0074,
+      "median": 0.0086,
+      "samples": 11,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "star_GoldStar_002_vs_host": {
+      "min": 0.0074,
+      "median": 0.0085,
+      "samples": 11,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "star_GoldStar_003_vs_host": {
+      "min": 0.0071,
+      "median": 0.0083,
+      "samples": 11,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "star_GoldStar_004_vs_host": {
+      "min": 0.0058,
+      "median": 0.0079,
+      "samples": 11,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "hatstar_vs_cone": {
+      "min": 0.0049,
+      "median": 0.0071,
+      "samples": 11,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "buckle_vs_belt": {
+      "min": 0.0013,
+      "median": 0.0132,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "bootbuckle_vs_boot": {
+      "min": 0.0043,
+      "median": 0.0157,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "earring_vs_head": {
+      "min": 0.0055,
+      "median": 0.0192,
+      "samples": 14,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "bootbuckle.001_vs_boot": {
+      "min": 0.0043,
+      "median": 0.0157,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "earring.001_vs_head": {
+      "min": 0.0055,
+      "median": 0.0192,
+      "samples": 14,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "streak_vs_hair": {
+      "min": 0.0269,
+      "median": 0.0646,
+      "samples": 26,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "pleat_vs_coat": {
+      "min": 0.0086,
+      "median": 0.0306,
+      "samples": 12,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "pleat.001_vs_coat": {
+      "min": 0.0048,
+      "median": 0.0263,
+      "samples": 12,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "pleat.002_vs_coat": {
+      "min": 0.0069,
+      "median": 0.0289,
+      "samples": 12,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "pleat.003_vs_coat": {
+      "min": 0.0045,
+      "median": 0.0263,
+      "samples": 12,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "pleat.004_vs_coat": {
+      "min": 0.0086,
+      "median": 0.0306,
+      "samples": 12,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "pleat.005_vs_coat": {
+      "min": 0.0048,
+      "median": 0.0263,
+      "samples": 12,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "pleat.006_vs_coat": {
+      "min": 0.0069,
+      "median": 0.0289,
+      "samples": 12,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "pleat.007_vs_coat": {
+      "min": 0.0066,
+      "median": 0.0286,
+      "samples": 12,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "glove_vs_handL": {
+      "min": 0.0006,
+      "median": 0.0211,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "sleeveL_vs_coat": {
+      "min": 0.0017,
+      "median": 0.0894,
+      "samples": 52,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "sleeveR_vs_coat": {
+      "min": 0.0017,
+      "median": 0.0894,
+      "samples": 52,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "giftbox_vs_handR": {
+      "min": 0.0194,
+      "median": 0.0784,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "giftbox_vs_sleeveR": {
+      "min": 0.01,
+      "median": 0.0793,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "ribbonX_vs_box": {
+      "min": 0.0028,
+      "median": 0.0028,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "ribbonY_vs_box": {
+      "min": 0.0028,
+      "median": 0.0028,
+      "samples": 8,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "bow_vs_box": {
+      "min": 0.001,
+      "median": 0.015,
+      "samples": 14,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "tip_vs_cone": {
+      "min": 0.0017,
+      "median": 0.0195,
+      "samples": 16,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "pompom_vs_tip": {
+      "min": 0.0003,
+      "median": 0.0172,
+      "samples": 26,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "sweater_vs_trousers": {
+      "min": 0.002,
+      "median": 0.4806,
+      "samples": 80,
+      "minimum": 0.005,
+      "ok": false
+    },
+    "bootcuff_vs_trousers": {
+      "min": 0.0156,
+      "median": 0.0341,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    },
+    "bootcuff.001_vs_trousers": {
+      "min": 0.0156,
+      "median": 0.0341,
+      "samples": 20,
+      "minimum": 0.005,
+      "ok": true
+    }
+  },
+  "protrusions": {
+    "GoldStar": {
+      "lift": 0.0089,
+      "ok": true,
+      "host": "SnowSweater",
+      "lo": 0.005,
+      "hi": 0.02
+    },
+    "GoldStar.001": {
+      "lift": 0.0097,
+      "ok": true,
+      "host": "SnowSweater",
+      "lo": 0.005,
+      "hi": 0.02
+    },
+    "GoldStar.002": {
+      "lift": 0.0096,
+      "ok": true,
+      "host": "SnowSweater",
+      "lo": 0.005,
+      "hi": 0.02
+    },
+    "GoldStar.003": {
+      "lift": 0.0102,
+      "ok": true,
+      "host": "RedCoat",
+      "lo": 0.005,
+      "hi": 0.02
+    },
+    "GoldStar.004": {
+      "lift": 0.0113,
+      "ok": true,
+      "host": "RedCoat",
+      "lo": 0.005,
+      "hi": 0.02
+    },
+    "GoldStarHat": {
+      "lift": 0.0099,
+      "analytic": 0.0065,
+      "ok": true,
+      "host": "SantaHatCone (ideal cone)",
+      "lo": 0.0005,
+      "hi": 0.0125
+    },
+    "GoldBeltBuckle": {
+      "lift": 0.0139,
+      "ok": true,
+      "host": "PineBelt",
+      "lo": 0.005,
+      "hi": 0.03
+    },
+    "GoldBootBuckle": {
+      "lift": 0.0157,
+      "ok": true,
+      "host": "RedBoot",
+      "lo": 0.005,
+      "hi": 0.03
+    },
+    "GoldEarring": {
+      "lift": 0.0303,
+      "ok": true,
+      "host": "Mannequin_Head",
+      "lo": 0.005,
+      "hi": 0.035
+    },
+    "GoldBootBuckle.001": {
+      "lift": 0.0157,
+      "ok": true,
+      "host": "RedBoot.001",
+      "lo": 0.005,
+      "hi": 0.03
+    },
+    "GoldEarring.001": {
+      "lift": 0.0303,
+      "ok": true,
+      "host": "Mannequin_Head",
+      "lo": 0.005,
+      "hi": 0.035
+    },
+    "HairStreak": {
+      "lift": 0.0397,
+      "raw_lift": 0.0952,
+      "visible_verts": 22,
+      "total_verts": 26,
+      "ok": true,
+      "host": "Mannequin_Hair/Mannequin_Head (visible part only)",
+      "lo": 0.005,
+      "hi": 0.045
+    },
+    "RedPleat": {
+      "lift": 0.0307,
+      "analytic": 0.0261,
+      "analytic_label": "ideal cone",
+      "analytic_tol": 0.007,
+      "ok": true,
+      "host": "RedCoat (ideal cone)",
+      "lo": 0.02,
+      "hi": 0.032
+    },
+    "RedPleat.001": {
+      "lift": 0.0263,
+      "analytic": 0.0261,
+      "analytic_label": "ideal cone",
+      "analytic_tol": 0.007,
+      "ok": true,
+      "host": "RedCoat (ideal cone)",
+      "lo": 0.02,
+      "hi": 0.032
+    },
+    "RedPleat.002": {
+      "lift": 0.029,
+      "analytic": 0.026,
+      "analytic_label": "ideal cone",
+      "analytic_tol": 0.007,
+      "ok": true,
+      "host": "RedCoat (ideal cone)",
+      "lo": 0.02,
+      "hi": 0.032
+    },
+    "RedPleat.003": {
+      "lift": 0.0263,
+      "analytic": 0.026,
+      "analytic_label": "ideal cone",
+      "analytic_tol": 0.007,
+      "ok": true,
+      "host": "RedCoat (ideal cone)",
+      "lo": 0.02,
+      "hi": 0.032
+    },
+    "RedPleat.004": {
+      "lift": 0.0307,
+      "analytic": 0.0261,
+      "analytic_label": "ideal cone",
+      "analytic_tol": 0.007,
+      "ok": true,
+      "host": "RedCoat (ideal cone)",
+      "lo": 0.02,
+      "hi": 0.032
+    },
+    "RedPleat.005": {
+      "lift": 0.0263,
+      "analytic": 0.0261,
+      "analytic_label": "ideal cone",
+      "analytic_tol": 0.007,
+      "ok": true,
+      "host": "RedCoat (ideal cone)",
+      "lo": 0.02,
+      "hi": 0.032
+    },
+    "RedPleat.006": {
+      "lift": 0.029,
+      "analytic": 0.026,
+      "analytic_label": "ideal cone",
+      "analytic_tol": 0.007,
+      "ok": true,
+      "host": "RedCoat (ideal cone)",
+      "lo": 0.02,
+      "hi": 0.032
+    },
+    "RedPleat.007": {
+      "lift": 0.0286,
+      "analytic": 0.0261,
+      "analytic_label": "ideal cone",
+      "analytic_tol": 0.007,
+      "ok": true,
+      "host": "RedCoat (ideal cone)",
+      "lo": 0.02,
+      "hi": 0.032
+    }
+  },
+  "protrusions_ok": true,
+  "earring_ideal_relief": 0.0161,
+  "earring_analytic_relief": 0.0189,
+  "glove": {
+    "hand_verts_total": 20,
+    "inside_glove": 13,
+    "covered_by_sleeve": 7,
+    "uncovered": 0,
+    "uncovered_points": [],
+    "glove_vs_hand_min": 0.0006,
+    "ok": true
+  },
+  "giftbox": {
+    "wrist_measured": [
+      0.4063,
+      0.0,
+      0.6753
+    ],
+    "wrist_design": [
+      0.4063,
+      0.0,
+      0.6753
+    ],
+    "wrist_error": 0.0,
+    "box_centre": [
+      0.4063,
+      -0.11,
+      0.6253
+    ],
+    "box_design_centre": [
+      0.4063,
+      -0.11,
+      0.6253
+    ],
+    "box_centre_error": 0.0,
+    "box_verts_inside_hand_ellipsoid": "0/8",
+    "box_deepest_embed": 0.0,
+    "box_edge_closest_q": 1.0098,
+    "box_edge_closest_gap_ideal": 0.0004,
+    "box_vs_hand_mesh_min": 0.0194,
+    "box_vs_sleeve_min": 0.01,
+    "top_corner_past_cap_plane": 0.0197,
+    "top_corner_past_cap_plane_design": 0.0198,
+    "box_min_past_cap_plane": 0.01,
+    "bow_vs_box_max": 0.022,
+    "ribbon_vs_box_max": 0.0028,
+    "ok": false
+  },
+  "trouser_boot": {
+    "trouser_hem_z": 0.34,
+    "trouser_top_z": 0.62,
+    "sweater_hem_z": 0.62,
+    "hem_meets_sweater": true,
+    "cuff_poke": {
+      "L": {
+        "top_ring_verts_above_hem": 10,
+        "outside_trouser": 6,
+        "max_poke": 0.0436
+      },
+      "R": {
+        "top_ring_verts_above_hem": 10,
+        "outside_trouser": 6,
+        "max_poke": 0.0436
+      }
+    },
+    "cuff_poke_ok": false,
+    "leg_verts_outside_all_at_band": 0,
+    "leg_covered": true,
+    "sweater_vs_trousers_min": 0.002,
+    "bootcuff_vs_trousers_min_L": 0.0156,
+    "bootcuff_vs_trousers_min_R": 0.0156,
+    "ok": false
+  },
+  "star_positions": {
+    "GoldStar": {
+      "centre": [
+        -0.0,
+        -0.1552,
+        1.32
+      ],
+      "angle_deg": 270.0,
+      "design_angle_deg": 270,
+      "design_z": 1.32,
+      "in_open_wedge_240_300": true,
+      "ok": true
+    },
+    "GoldStar.001": {
+      "centre": [
+        -0.0378,
+        -0.147,
+        1.02
+      ],
+      "angle_deg": 262.2,
+      "design_angle_deg": 262,
+      "design_z": 1.02,
+      "in_open_wedge_240_300": true,
+      "ok": true
+    },
+    "GoldStar.002": {
+      "centre": [
+        0.0378,
+        -0.147,
+        1.02
+      ],
+      "angle_deg": 277.8,
+      "design_angle_deg": 278,
+      "design_z": 1.02,
+      "in_open_wedge_240_300": true,
+      "ok": true
+    },
+    "GoldStar.003": {
+      "centre": [
+        -0.2215,
+        -0.1194,
+        1.1
+      ],
+      "angle_deg": 225.9,
+      "design_angle_deg": 225,
+      "design_z": 1.1,
+      "in_open_wedge_240_300": false,
+      "ok": true
+    },
+    "GoldStar.004": {
+      "centre": [
+        0.2401,
+        -0.1088,
+        1.1
+      ],
+      "angle_deg": 319.0,
+      "design_angle_deg": 320,
+      "design_z": 1.1,
+      "in_open_wedge_240_300": false,
+      "ok": true
+    },
+    "GoldStarHat": {
+      "centre": [
+        -0.0,
+        -0.1558,
+        1.75
+      ],
+      "design_centre": [
+        0.0,
+        -0.1558,
+        1.75
+      ],
+      "centre_error": 0.0,
+      "normal": [
+        -0.0,
+        -0.826,
+        0.564
+      ],
+      "design_normal": [
+        0.0,
+        -0.826,
+        0.564
+      ],
+      "normal_dot": 1.0,
+      "ok": true
+    }
+  },
+  "star_positions_ok": true,
+  "floating_bad": [],
+  "floating_ok": true,
+  "garment_bbox": {
+    "x": [
+      -0.507,
+      0.507
+    ],
+    "y": [
+      -0.281,
+      0.32
+    ],
+    "z": [
+      0.0,
+      1.967
+    ],
+    "height": 1.967,
+    "width": 1.013
+  },
+  "sole_min_z": 0.0,
+  "ground_ok": true,
+  "foot_min_z": 0.0,
+  "fail_items": [
+    "礼物盒掌前（见第 4.7 节：盒子浮在掌前，未握持嵌入）",
+    "长裤与短靴搭接（见第 4.8 节：靴口顶环穿出裤面）"
+  ],
+  "top_z": 1.967,
+  "top_object": "SantaHatTip",
+  "frame_fraction": 0.688,
+  "frame_ok": true,
+  "materials": {
+    "rows": [
+      {
+        "name": "ChristmasRed",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.533,
+          0.02,
+          0.026
+        ],
+        "ok": true
+      },
+      {
+        "name": "SnowWhite",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.65,
+        "base_color": [
+          0.93,
+          0.896,
+          0.807
+        ],
+        "ok": true
+      },
+      {
+        "name": "PineGreen",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.013,
+          0.074,
+          0.044
+        ],
+        "ok": true
+      },
+      {
+        "name": "Navy",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.011,
+          0.023,
+          0.068
+        ],
+        "ok": true
+      },
+      {
+        "name": "Gold",
+        "found": true,
+        "metallic": 0.6,
+        "roughness": 0.35,
+        "base_color": [
+          0.584,
+          0.361,
+          0.02
+        ],
+        "ok": true
+      },
+      {
+        "name": "LightBlue",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.212,
+          0.479,
+          0.807
+        ],
+        "ok": true
+      },
+      {
+        "name": "Hair_Black",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.7,
+        "base_color": [
+          0.011,
+          0.011,
+          0.015
+        ],
+        "ok": true
+      },
+      {
+        "name": "Skin",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.7,
+        "base_color": [
+          0.694,
+          0.381,
+          0.209
+        ],
+        "ok": true
+      },
+      {
+        "name": "Eye_Dark",
+        "found": true,
+        "metallic": 0.0,
+        "roughness": 0.6,
+        "base_color": [
+          0.003,
+          0.003,
+          0.003
+        ],
+        "ok": true
+      }
+    ],
+    "all_ok": true
+  },
+  "warnings": [
+    "earring_relief_faceting: 金耳钉离头面最远点 0.0303 / 0.0303 米（设计浮雕 0.019）：人偶头是 10×8 粗球面，耳钉所贴的面片比理想椭球面内收约 0.011 米，网格实测值含该面片内收；按理想椭球面算浮雕为 0.0161 米（顶点采样，粗球面无顶点落在耳钉正外侧），按耳钉中心+半径算外沿浮雕为 0.0189 米，与设计值 0.019 一致。耳钉半嵌头面（最小距离 0.0055 / 0.0055 米），读作金耳钉，无漂浮。",
+    "hatcone_two_heights: 圣诞帽红锥（底环 z 1.64 r 0.235、顶 z 1.94 r 0.030，12 边）vs 发顶：全锥最小间隙 0.0319 米（设计值 z 1.64 档 0.0277），z 1.66 档最小间隙 0.0230 米（设计值 0.0264，实测锥面 z 1.66 处 r 0.2213，设计值 0.2213）：锥体按两档验，底环一档不够——发面最宽处附近仍 ≥0.005，帽子不擦头发。",
+    "brim_above_eyes: 雪白帽边（z 1.64–1.59，r 0.245/0.248）底沿 z 1.590 米，眼顶 z 1.555 米（眼线 1.525 之上 0.065 米），帽边底在眼顶之上 0.035 米，双眼正面可辨；帽边离发顶 0.0284 米（要求 ≥0.005），锥底环藏进帽边顶环内（锥 r 0.235 vs 帽边 r 0.245，间隙 0.0058 米）。",
+    "collar_arc_ends: 雪白毛领前开弧（300°–600°，与大衣同款开襟做法）：毛领顶点 0 个落在前开楔（240°–300°）内（要求 0），弧端 4 个顶点正好落在 240°/300° 边上（x ±0.16、y -0.28，脸侧而非脸前）：v1 整圈横过眼睛读作蒙眼布的问题已修，双眼可见；但弧端在效果图上读作脸侧两片白标签，下次可把弧端向后收 10°（250°–290°）或把弧端收窄。",
+    "star_patch_relief: 金色圣诞星×5、帽上金星是扁平五角星贴片（单面扇形三角 10 面/片，法线靠构造绕序保证朝外，不适用质心法向检查）：实测凸起 0.0089–0.0113 米（要求 0.005–0.02；上限含 16 段椭圆筒的刻面矢高约 0.0052 与曲面曲率约 0.0023）；帽上金星另按理想锥面解析值 0.0065 米判定（实测 0.0099 米，差 0.0034 米，允差 ±0.012）。设计记录：design.md 第二颗大衣星记 315°，build_048 用 320°，两者都在开襟楔（240°–300°）外，本单按实测 320° 判定通过；design.md 应改 315°→320°，避免后人按文档量出偏差。",
+    "sleeve_through_coat_shoulder: 藏青长袖从大衣肩部穿出（032 的做法：袖筒起点沿臂轴上抬 0.12）：袖面与大衣面在肩部相交（袖顶点离大衣面最小 0.0017 / 0.0017 米），属缝合构造、不是穿帮；袖筒 caps=True，筒口不透手臂顶盖。",
+    "sweater_trouser_joint: 雪白毛衣下摆 z 0.620 米与藏青长裤顶 z 0.620 米对接（设计值均为 0.62）：毛衣顶点离裤面最小 0.002 米，属对接缝、不是层间隙；长裤顶环藏进毛衣下摆，搭接带无露肤（见第 4.8 节：搭接带 z 0.32–0.36 的腿顶点 0 个在裤椭圆与靴筒之外）。",
+    "pleat_relief_sagitta: 圣诞红大衣褶裥片×8 外沿设计浮雕 0.026 米，是按光滑大衣锥（环插值）算的；大衣面是 16 段刻面筒，网格实测凸起含刻面矢高（rx 0.322 处最大 0.0064）：判定按理想锥面解析值（要求 0.020–0.032，网格值与解析值之差 ≤ 0.007），八片全过；褶裥几何与设计一致，不是漂浮（041 帽上雨滴、037 护目镜片、034 墨镜片、043 枫叶帽针、046 樱花褶裥同款量法修正）。",
+    "giftbox_graze: 圣诞礼物盒离右手掌：盒顶点离手掌网格最近 0.0194 米，盒 8 个顶点无一落在手掌椭球内（最深嵌入 0.0000 米）；盒边中点离理想手掌椭球最近的 q 值为 1.0098（q<1 才算进入椭球），对应理想面间隙 0.0004 米：盒背面顶边擦过掌面、没有嵌进去——build_048 的 L2 掌嵌 0.0085 米是按球面（r 0.085）近似算的，真实手掌是缩放 (1.0, 0.9, 0.8) 的椭球，y 向半径只有 0.0765、z 向只有 0.068，盒背面的 y -0.075、z -0.05 位置落在椭球之外。效果图上盒子贴着手掌、读作握持，但按实测不算握持嵌入，见第 7 节 giftbox_float。",
+    "normals_fixed_by_build: 048 全件实体倒置法线 0——build_048 对全部非星形贴片对象跑 fix_normals（045/047 的教训：开襟弧面管 RedCoat与楔形 RedBootSole 的构造绕序朝内，须跑 fix_normals；扁平金星贴片仍跳过）。本单 recalc 全件 0 倒置，与几何一致，无 046 贝雷帽带式误判（048 无开口锥台帽带类几何）。",
+    "[硬检查不通过] giftbox_float: 圣诞礼物盒未握持嵌入——盒中心实测 (0.4063, -0.1100, 0.6253)，与设计值误差 0.0000 米（盒子位置本身是对的）；但盒顶点离手掌网格最近 0.0194 米（要求 ≤0.005 才算贴合），8 个顶点无一在手掌椭球内，盒边离理想掌面最近 0.0004 米：盒子浮在掌前约 0.02 米，没有嵌进手掌。修复法：把礼物盒中心从 (wx, wy-0.11, wz-0.05) 移到 (wx, wy-0.085, wz-0.02)（盒背面 y -0.05、z -0.02，椭球值 (0.05/0.0765)^2+(0.02/0.068)^2=0.51<1，背面嵌进掌面约 0.008 米），重跑 build_048 生成新 blend，再重跑本单；同时把 build_048 的 L2 掌嵌公式改按真实手掌椭球算，球面近似会把 0.0085 的假嵌入算成通过。",
+    "[硬检查不通过] bootcuff_pierce: 雪白靴口顶环穿出藏青长裤裤面——左靴口顶环（z 0.36）6/10 个顶点在裤椭圆之外、最大穿出 0.0436 米，右靴口顶环（z 0.36）6/10 个顶点在裤椭圆之外、最大穿出 0.0436 米：靴口是绕腿轴的圆环（r 0.124，腿轴 x ±0.13），长裤是绕双腿的椭圆筒（z 0.36 处 rx 0.233、ry 0.124），圆环在斜 45° 方向超出椭圆面——白靴口的上半圈（z 0.34–0.36）从裤面里穿出来，效果图上白圈贴着裤脚、裤面被顶破。修复法（二选一）：(a) 把靴口下移到 z 0.34–0.30（整圈落在裤脚之下，只露设计好的 0.02 米白边）；(b) 把长裤下摆 rx/ry 放到 0.26/0.14（裤脚包住靴口顶环，间隙 ≥0.005）。重跑 build_048 生成新 blend，再重跑本单。"
+  ],
+  "overall_pass": false
+}
